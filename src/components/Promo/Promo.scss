@@ -1,0 +1,43 @@
+@mixin font-settings($height, $weight, $size) {
+  line-height: $height;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+.banner {
+  background-color: #DDDEE3;
+  min-height: 648px;
+  position: relative;
+  padding-top: 149px;
+  box-sizing: border-box;
+}
+.banner__title {
+  @include font-settings($height: 58px, $weight: 400, $size: 50px);
+  margin: 0;
+  max-width: 640px;
+}
+.banner__subtitle {
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
+  margin: 36px 0 0 0;
+  max-width: 310px;
+  opacity: .5;
+}
+.banner__btn {
+  @include font-settings($height: 16px, $weight: 500, $size: 12px);
+  text-decoration: none;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, .6);
+  border-radius: 3px;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 146px;
+}
+.banner__planet {
+  background-image: url(../../images/banner-planet.png);
+  background-size: 100% 100%;
+  width: 310px;
+  height: 304px;
+  position: absolute;
+  top: 149px;
+  right: 70px;
+}

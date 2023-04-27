@@ -1,0 +1,11 @@
+@import url(../../vendor/normalize.css);
+@import "../../vendor/fonts";
+
+.body {
+  position: relative;
+  font-family: 'Inter', Helvetica, sans-serif;
+}
+.indent-section {
+  padding-right: 70px;
+  padding-left: 70px;
+}

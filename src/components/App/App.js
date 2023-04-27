@@ -6,20 +6,20 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import Header from '../Header/Header';
 
-function App() {
+export default function App() {
   return (
     <>
+    <Header />
     <Routes>
-      <Route path='/' component={Main} />
-      <Route path='/movies' component={Movies} />
-      <Route path='/saved-movies' component={SavedMovies} />
-      <Route path='/profile' component={Profile} />
-      <Route path='/signin' component={Login} />
-      <Route path='/signup' component={Register} />
+      <Route path='/' Component={Main} />
+      <Route path='/movies' Component={Movies} />
+      <Route path='/saved-movies' Component={SavedMovies} />
+      <Route path='/profile' Component={Profile} />
+      <Route path='/signin' Component={Login} />
+      <Route path='/signup' Component={Register} />
     </Routes>
     </>
   );
 }
-
-export default App;
