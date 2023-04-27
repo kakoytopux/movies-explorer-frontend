@@ -4,7 +4,7 @@ import './AboutProject.scss';
 export default function AboutProject() {
   return (
     <section className="about-project indent-section">
-      <h3 className="about-project__title">О проекте</h3>
+      <h3 className="title-section">О проекте</h3>
       <div className="project-info">
         <div className="project-info__container">
           <h4 className="project-info__title">Дипломный проект включал 5 этапов</h4>
