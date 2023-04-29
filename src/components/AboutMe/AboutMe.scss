@@ -1,0 +1,40 @@
+@mixin font-settings($height, $weight, $size) {
+  line-height: $height;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+.about-me {
+  padding-top: 110px;
+  padding-bottom: 100px;
+}
+.about-me__container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 66px;
+}
+.about-me__title {
+  @include font-settings($height: 58px, $weight: 400, $size: 50px);
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+.about-me__subtitle {
+  @include font-settings($height: 20px, $weight: 500, $size: 18px);
+  margin: 18px 0 0 0;
+}
+.about-me__desc {
+  @include font-settings($height: 22px, $weight: 400, $size: 14px);
+  margin: 26px 0 0 0;
+  max-width: 600px;
+}
+.about-me__link-github {
+  @include font-settings($height: 17px, $weight: 500, $size: 14px);
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 100px;
+}
+.about-me__img {
+  width: 270px;
+  height: 327px;
+}
