@@ -4,13 +4,13 @@ import './Techs.scss';
 export default function Techs() {
   return (
     <section className="techs indent-section">
-      <h3 className="title-section">Технологии</h3>
+      <h2 className="title-section">Технологии</h2>
       <div className="techs-info">
         <div className="techs-info__container">
-          <h1 className="techs-info__title">7 технологий</h1>
+          <h3 className="techs-info__title">7 технологий</h3>
           <p className="techs-info__subtitle">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
         </div>
-        <ul className="techs-info__lists">
+        <ul className="techs-info__lists lists">
           <li className="techs-info__list">
             <p className="techs-info__list-text">HTML</p>
           </li>

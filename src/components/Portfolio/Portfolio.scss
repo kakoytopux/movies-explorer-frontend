@@ -13,29 +13,27 @@
   margin: 0;
 }
 .portfolio__lists {
-  padding: 0;
-  margin: 50px 0 0 0;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  list-style: none;
 }
 .portfolio__list {
   @include font-settings($height: 50px, $weight: 400, $size: 30px);
   letter-spacing: -0.04em;
   border-bottom: 1px solid #E8E8E8;
   padding-bottom: 19px;
-  display: flex;
-  justify-content: space-between;
+  position: relative;
 }
 .portfolio__list:last-of-type {
   border-bottom: 0;
   padding-bottom: 0;
 }
 .portfolio__list::after {
-  content: '↗';
-  @include font-settings($height: 50px, $weight: 400, $size: 30px);
-  letter-spacing: -0.04em;
+  content: '\2197';
+  position: absolute;
+  top: 5px;
+  right: 1px;
 }
 .portfolio__list-link {
   text-decoration: none;
