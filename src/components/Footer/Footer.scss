@@ -1,17 +1,13 @@
-@mixin font-settings {
-  line-height: 16px;
-  font-weight: 400;
-  font-size: 13px;
-}
+@import "../../vendor/config";
 
 .footer {
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
   background-color: #F8F8F8;
-  @include font-settings;
   padding-top: 79px;
   padding-bottom: 20px;
 }
 .footer__title {
-  @include font-settings;
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
   color: #A0A0A0;
   margin: 0;
   text-align: center;
@@ -19,7 +15,7 @@
   padding-bottom: 20px;
 }
 .footer__container {
-  display: flex;
+  display: $display;
   justify-content: space-between;
   margin-top: 20px;
 }
@@ -27,10 +23,9 @@
   margin: 0;
 }
 .footer__lists {
-  display: flex;
+  display: $display;
   gap: 20px;
 }
 .footer__list-link {
-  text-decoration: none;
   color: #000;
 }

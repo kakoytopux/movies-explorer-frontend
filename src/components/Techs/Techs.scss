@@ -1,9 +1,4 @@
-$display: flex;
-@mixin font-settings($height, $weight, $size) {
-  line-height: $height;
-  font-weight: $weight;
-  font-size: $size;
-}
+@import "../../vendor/config";
 
 .techs {
   padding-top: 100px;

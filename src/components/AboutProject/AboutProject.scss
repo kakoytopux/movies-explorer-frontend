@@ -1,9 +1,4 @@
-$display: flex;
-@mixin font-settings($height, $weight, $size) {
-  line-height: $height;
-  font-weight: $weight;
-  font-size: $size;
-}
+@import "../../vendor/config";
 
 .about-project {
   padding-top: 110px;
@@ -61,4 +56,25 @@ $display: flex;
   @include font-settings($height: 17px, $weight: 500, $size: 14px);
   margin: 0;
   color: #A0A0A0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+  .project-info__desc {
+    @include font-settings($height: 18px, $weight: 400, $size: 12px);
+    margin-top: 22px;
+    max-width: 319px;
+  }
+  .passing {
+    margin-top: 93px;
+  }
+  .passing__background_type_blue {
+    min-width: 140px;
+  }
+  .passing__direction {
+    @include font-settings($height: 17px, $weight: 400, $size: 14px);
+  }
 }

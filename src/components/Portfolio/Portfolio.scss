@@ -1,8 +1,4 @@
-@mixin font-settings($height, $weight, $size) {
-  line-height: $height;
-  font-weight: $weight;
-  font-size: $size;
-}
+@import "../../vendor/config";
 
 .portfolio {
   padding-bottom: 125px;
@@ -14,7 +10,7 @@
 }
 .portfolio__lists {
   margin-top: 50px;
-  display: flex;
+  display: $display;
   flex-direction: column;
   gap: 20px;
 }
@@ -36,6 +32,5 @@
   right: 1px;
 }
 .portfolio__list-link {
-  text-decoration: none;
   color: #000;
 }
