@@ -45,3 +45,27 @@
   margin: 0;
   width: fit-content;
 }
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding-top: 91px;
+    padding-bottom: 90px;
+  }
+  .techs-info__subtitle {
+    @include font-settings($height: 18px, $weight: 400, $size: 12px);
+    margin-top: 22px;
+  }
+  .techs-info {
+    margin-top: 80px;
+  }
+  .techs-info__lists {
+    margin-top: 83px;
+  }
+  .techs-info__list {
+    padding: 21px 0;
+    width: 84px;
+  }
+  .techs-info__list-text {
+    @include font-settings($height: 15px, $weight: 400, $size: 12px);
+  }
+}

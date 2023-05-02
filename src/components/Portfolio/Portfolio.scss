@@ -34,3 +34,15 @@
 .portfolio__list-link {
   color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    padding-bottom: 90px;
+  }
+  .portfolio__lists {
+    margin-top: 43px;
+  }
+  .portfolio__list {
+    @include font-settings($height: 50px, $weight: 400, $size: 28px);
+  }
+}
