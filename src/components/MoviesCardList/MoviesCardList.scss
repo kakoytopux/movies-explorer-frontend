@@ -1,0 +1,26 @@
+@import "../../vendor/config";
+
+.cards {
+  padding-top: 70px;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+}
+.cards__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  row-gap: 37px;
+}
+.cards__btn {
+  align-self: center;
+  background-color: #F4F4F4;
+  border-radius: 6px;
+  padding: 11px 60px 9px 60px;
+  width: 320px;
+  border: none;
+  cursor: pointer;
+  @include font-settings($height: 15px, $weight: 500, $size: 12px);
+  margin-top: 60px;
+}
