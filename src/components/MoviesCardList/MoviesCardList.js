@@ -1,17 +1,16 @@
 import React from 'react';
 import './MoviesCardList.scss';
-import { arrCards } from '../../utils/const';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-export default function MoviesCardList() {
+export default function MoviesCardList({ movies, savedMovies }) {
   return (
-    <section className='cards indent-section'>
+    <section className={`cards indent-section ${savedMovies ? 'cards_type_saved' : ''}`}>
       <div className='cards__container'>
-        {arrCards.map((card, i) => 
-          <MoviesCard key={i} card={card} />
+        {movies.map((card, i) =>
+          <MoviesCard key={i} card={card} savedMovies={savedMovies} />
         )}
       </div>
-      <button type='button' className='cards__btn'>Ещё</button>
+      {savedMovies ? '' : <button type='button' className='cards__btn'>Ещё</button>}
     </section>
   );
 }

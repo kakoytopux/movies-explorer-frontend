@@ -1,4 +1,4 @@
-export const arrCards = [
+export const movies = [
   {
     link: require('../images/card1.png'),
     name: '33 слова о дизайне',
@@ -58,5 +58,23 @@ export const arrCards = [
     link: require('../images/card12.png'),
     name: 'По волнам: Искусство звука в кино',
     time: '1ч 7м',
+  },
+];
+
+export const savedMovies = [
+  {
+    link: require('../images/card1.png'),
+    name: '33 слова о дизайне',
+    time: '1ч 47м',
+  },
+  {
+    link: require('../images/card2.png'),
+    name: 'Киноальманах «100 лет дизайна»',
+    time: '1ч 3м',
+  },
+  {
+    link: require('../images/card3.png'),
+    name: 'В погоне за Бенкси',
+    time: '1ч 42м',
   },
 ];

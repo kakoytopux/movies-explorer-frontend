@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
+import { movies } from '../../utils/const';
+// import Preloader from "../Preloader/Preloader";
 
 export default function Movies() {
   return (
@@ -10,8 +12,9 @@ export default function Movies() {
     <Header movies={true} />
     <main className="content">
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList movies={movies} />
       <Footer />
+      {/* <Preloader /> */}
     </main>
     </>
   );
