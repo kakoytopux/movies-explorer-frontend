@@ -2,6 +2,7 @@
 
 .portfolio {
   padding-bottom: 125px;
+  background-color: #FAFAFA;
 }
 .portfolio__title {
   @include font-settings($height: 20px, $weight: 400, $size: 18px);

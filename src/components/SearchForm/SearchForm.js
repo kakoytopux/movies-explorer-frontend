@@ -11,9 +11,9 @@ export default function SearchForm() {
   
   return (
     <section className="search indent-section">
-      <form className="search__form">
+      <form className="search__form" method="post" name="search">
         <div className="search__container-field">
-          <input type="text" placeholder="Фильм" className="search__field" name="search" required />
+          <input type="text" placeholder="Фильм" className="search__field" name="movies" required />
           <button type="submit" className="search__submit"></button>
         </div>
         <div className="search__container-checkbox">

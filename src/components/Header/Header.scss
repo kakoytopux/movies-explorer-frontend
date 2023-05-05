@@ -2,10 +2,12 @@
 
 .header {
   position: absolute;
-  top: 18px;
+  top: 0;
   left: 0;
   z-index: 1;
   width: 100%;
+  background-color: #FAFAFA;
+  padding: 18px 0;
 }
 .header__container {
   display: $display;
@@ -18,19 +20,6 @@
   background-size: 100% 100%;
   width: 38px;
   height: 38px;
-}
-.header__lists {
-  display: flex;
-  gap: 16px;
-}
-.header__list {
-  @include font-settings($height: 18px, $weight: 400, $size: 13px);
-}
-.header__list-link {
-  color: #000;
-}
-.header__list-link_active {
-  font-weight: 500;
 }
 .header__link-profile {
   @include font-settings($height: 12px, $weight: 500, $size: 13px);

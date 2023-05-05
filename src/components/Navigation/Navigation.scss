@@ -1,0 +1,15 @@
+@import "../../vendor/config";
+
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+.navigation__list {
+  @include font-settings($height: 18px, $weight: 400, $size: 13px);
+}
+.navigation__list-link {
+  color: #000;
+}
+.navigation__list-link_active {
+  font-weight: 500;
+}

@@ -13,9 +13,9 @@ export default function Movies() {
     <main className="content">
       <SearchForm />
       <MoviesCardList movies={movies} />
-      <Footer />
       {/* <Preloader /> */}
     </main>
+    <Footer />
     </>
   );
 }
