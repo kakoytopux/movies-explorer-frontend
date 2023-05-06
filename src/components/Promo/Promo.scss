@@ -1,11 +1,9 @@
 @import "../../utils/config";
 
 .banner {
-  background-color: #DDDEE3;
   position: relative;
-  padding-top: 149px;
-  padding-bottom: 75px;
   box-sizing: border-box;
+  @include section-settings($p-top: 149px, $p-bottom: 75px, $bg: #DDDEE3);
 }
 .banner__title {
   @include font-settings($height: 58px, $weight: 400, $size: 50px);
@@ -51,7 +49,7 @@
     order: 2;
   }
   .banner__title {
-    @include font-settings($height: 50px, $weight: 400, $size: 40px);
+    @include font-settings($height: 50px, $size: 40px);
     text-align: center;
     max-width: 680px;
     margin-top: 48px;

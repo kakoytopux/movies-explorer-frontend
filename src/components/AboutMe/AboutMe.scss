@@ -1,9 +1,7 @@
 @import "../../utils/config";
 
 .about-me {
-  padding-top: 110px;
-  padding-bottom: 100px;
-  background-color: #FAFAFA;
+  @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: #FAFAFA);
 }
 .about-me__container {
   display: flex;
@@ -37,18 +35,17 @@
 
 @media screen and (max-width: 768px) {
   .about-me {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    @include section-settings($p-top: 90px, $p-bottom: 90px);
   }
   .about-me__heading {
-    @include font-settings($height: 40px, $weight: 400, $size: 40px);
+    @include font-settings($height: 40px, $size: 40px);
   }
   .about-me__subheading {
-    @include font-settings($height: 18px, $weight: 500, $size: 12px);
+    @include font-settings($height: 18px, $size: 12px);
     margin-top: 16px;
   }
   .about-me__desc {
-    @include font-settings($height: 18px, $weight: 400, $size: 12px);
+    @include font-settings($height: 18px, $size: 12px);
     margin-top: 20px;
     max-width: 364px;
   }

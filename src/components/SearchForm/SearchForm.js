@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function SearchForm() {
   const [checked, setChecked] = useState(true);
 
-  function setCheckbox() {
-    setChecked(!checked);
+  function setCheckbox(evt) {
+    setChecked(evt.target.checked);
   }
   
   return (
@@ -18,11 +18,11 @@ export default function SearchForm() {
         </div>
         <div className="search__container-checkbox">
           <input type="checkbox" className="search__checkbox" name="short" id="short"
-          checked={checked ? true : false}
-          onClick={setCheckbox}
+          checked={checked}
+          onChange={setCheckbox}
           />
-          <label for="short" className="search__checkbox-custom"></label>
-          <label for="short" className="search__short-films">Короткометражки</label>
+          <label htmlFor="short" className="search__checkbox-custom"></label>
+          <label htmlFor="short" className="search__short-films">Короткометражки</label>
         </div>
       </form>
     </section>

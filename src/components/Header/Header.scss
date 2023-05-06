@@ -6,14 +6,15 @@
   left: 0;
   z-index: 1;
   width: 100%;
-  padding: 18px 0;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  box-sizing: border-box;
 }
 .header_type_sign {
   position: static;
-  padding-top: 70px;
-  padding-bottom: 40px;
   max-width: 396px;
   margin: 0 auto;
+  @include section-settings($p-top: 70px, $p-bottom: 40px);
 }
 .header__container {
   display: flex;
@@ -24,7 +25,7 @@
 .header__container_type_movies {
   margin-left: auto;
   margin-right: auto;
-  width: 1140px;
+  max-width: 1140px;
 }
 .header__container_type_sign {
   margin: 0;

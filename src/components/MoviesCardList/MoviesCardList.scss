@@ -1,11 +1,9 @@
 @import "../../utils/config";
 
 .cards {
-  padding-top: 70px;
-  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
-  background-color: #FAFAFA;
+  @include section-settings($p-top: 70px, $p-bottom: 80px, $bg: #FAFAFA);
 }
 .cards_type_saved {
   padding-bottom: 247px;

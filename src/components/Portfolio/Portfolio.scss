@@ -1,12 +1,11 @@
 @import "../../utils/config";
 
 .portfolio {
-  padding-bottom: 125px;
-  background-color: #FAFAFA;
+  @include section-settings($p-bottom: 125px, $bg: #FAFAFA);
 }
 .portfolio__title {
   @include font-settings($height: 20px, $weight: 400, $size: 18px);
-  color: #A0A0A0;
+  color: $text-color;
   margin: 0;
 }
 .portfolio__lists {
@@ -38,12 +37,12 @@
 
 @media screen and (max-width: 768px) {
   .portfolio {
-    padding-bottom: 90px;
+    @include section-settings($p-bottom: 90px);
   }
   .portfolio__lists {
     margin-top: 43px;
   }
   .portfolio__list {
-    @include font-settings($height: 50px, $weight: 400, $size: 28px);
+    @include font-settings($size: 28px);
   }
 }

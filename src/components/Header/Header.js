@@ -6,7 +6,7 @@ import Navigation from '../Navigation/Navigation'
 
 export default function Header({ movies, sign }) {
   return (
-    <header className={`header ${sign ? 'header_type_sign' : ''}`}>
+    <header className={`header ${movies && 'indent-section'} ${sign ? 'header_type_sign' : ''}`}>
       <div className={`header__container ${movies ? 'header__container_type_movies' : ''} ${sign ? 'header__container_type_sign' : ''}`}>
         <Link to='/' className="header__logo" />
         { sign ? '' :

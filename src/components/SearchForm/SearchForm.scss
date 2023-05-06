@@ -1,14 +1,12 @@
 @import "../../utils/config";
 
 .search {
-  padding-top: 134px;
-  padding-bottom: 10px;
-  background-color: #FAFAFA;
+  @include section-settings($p-top: 134px, $p-bottom: 10px, $bg: #FAFAFA);
 }
 .search__form {
   border-bottom: 1px solid #E8E8E8;
   padding-bottom: 69px;
-  width: fit-content;
+  max-width: 1140px;
   margin: 0 auto;
 }
 .search__container-field {
@@ -19,14 +17,14 @@
   outline: none;
   border: none;
   border-radius: 40px;
-  width: 1140px;
+  width: 100%;
   height: 46px;
   padding: 0 0 0 22px;
   box-sizing: border-box;
   @include font-settings($height: 17px, $weight: 400, $size: 13px);
 }
 .search__field::placeholder {
-  color: #A0A0A0;
+  color: $text-color;
 }
 .search__submit {
   background-color: #3456F3;

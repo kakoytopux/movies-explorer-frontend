@@ -2,13 +2,11 @@
 
 .footer {
   @include font-settings($height: 16px, $weight: 400, $size: 13px);
-  background-color: #F8F8F8;
-  padding-top: 79px;
-  padding-bottom: 20px;
+  @include section-settings($p-top: 79px, $p-bottom: 20px, $bg: #F8F8F8);
 }
 .footer__title {
   @include font-settings($height: 16px, $weight: 400, $size: 13px);
-  color: #A0A0A0;
+  color: $text-color;
   margin: 0;
   text-align: center;
   border-bottom: 1px solid #E8E8E8;
