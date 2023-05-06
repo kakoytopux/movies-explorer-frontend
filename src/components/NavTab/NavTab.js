@@ -4,9 +4,9 @@ import './NavTab.scss';
 
 export default function NavTab() {
   return (
-    <div className="sign">
-      <Link to='/signup' className="sign__up link">Регистрация</Link>
-      <Link to='/signin' className="sign__in link">Войти</Link>
+    <div className="sign-nav">
+      <Link to='/signup' className="sign-nav__up link">Регистрация</Link>
+      <Link to='/signin' className="sign-nav__in link">Войти</Link>
     </div>
   );
 }

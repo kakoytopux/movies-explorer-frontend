@@ -1,4 +1,4 @@
-@import "../../vendor/config";
+@import "../../utils/config";
 
 .portfolio {
   padding-bottom: 125px;
@@ -11,7 +11,7 @@
 }
 .portfolio__lists {
   margin-top: 50px;
-  display: $display;
+  display: flex;
   flex-direction: column;
   gap: 20px;
 }

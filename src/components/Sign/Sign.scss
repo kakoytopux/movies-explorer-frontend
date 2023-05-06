@@ -1,0 +1,60 @@
+@import "../../utils/config";
+
+.sign {
+  max-width: 396px;
+  margin: 0 auto;
+  padding-bottom: 70px;
+}
+.sign__title {
+  @include font-settings($height: 29px, $weight: 500, $size: 24px);
+  margin: 0;
+}
+.sign__form {
+  margin-top: 40px;
+}
+.sign__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.sign__container:last-of-type {
+  margin-bottom: 0;
+}
+.sign__label {
+  @include font-settings($height: 12px, $weight: 400, $size: 10px);
+  color: #A0A0A0;
+}
+.sign__field {
+  background-color: #F4F4F4;
+  border-radius: 8px;
+  border: none;
+  height: 46px;
+  padding: 0 0 0 15px;
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
+  outline: none;
+}
+.sign__submit {
+  margin-top: 90px;
+  background-color: #3456F3;
+  border-radius: 3px;
+  color: #fff;
+  padding: 14px 0;
+  width: 100%;
+  @include font-settings($height: 17px, $weight: 500, $size: 14px);
+  border: none;
+  cursor: pointer;
+}
+.sign__submit_type_sign-in {
+  margin-top: 178px;
+}
+.sign__text {
+  margin: 17px 0 0 0;
+  @include font-settings($height: 17px, $weight: 400, $size: 14px);
+  text-align: center;
+  color: #A0A0A0;
+}
+.sign__link {
+  color: #3456F3;
+  margin-left: 6px;
+}

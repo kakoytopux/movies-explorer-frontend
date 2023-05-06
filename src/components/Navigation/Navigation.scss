@@ -1,8 +1,9 @@
-@import "../../vendor/config";
+@import "../../utils/config";
 
 .navigation {
   display: flex;
   gap: 16px;
+  margin-left: 60px;
 }
 .navigation__list {
   @include font-settings($height: 18px, $weight: 400, $size: 13px);

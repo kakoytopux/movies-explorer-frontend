@@ -1,4 +1,4 @@
-@import "../../vendor/config";
+@import "../../utils/config";
 
 .card {
   width: 364px;
@@ -40,6 +40,10 @@
   background-image: url(../../images/del.svg);
   width: 7px;
   height: 7px;
+  display: none;
+}
+.card:hover .card__del {
+  display: block;
 }
 .card__time {
   @include font-settings($height: 13px, $weight: 400, $size: 11px);

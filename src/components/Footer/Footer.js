@@ -8,8 +8,8 @@ export default function Footer() {
       <div className="footer__container">
         <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
         <ul className="footer__lists lists">
-          <li className="footer__list"><a href="/#" className="footer__list-link link">Яндекс.Практикум</a></li>
-          <li className="footer__list"><a href="/#" className="footer__list-link link">Github</a></li>
+          <li className="footer__list"><a href="/#" target="_blank" className="footer__list-link link">Яндекс.Практикум</a></li>
+          <li className="footer__list"><a href="/#" target="_blank" className="footer__list-link link">Github</a></li>
         </ul>
       </div>
     </footer>

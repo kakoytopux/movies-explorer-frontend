@@ -1,4 +1,4 @@
-@import "../../vendor/config";
+@import "../../utils/config";
 
 .header {
   position: absolute;
@@ -6,14 +6,28 @@
   left: 0;
   z-index: 1;
   width: 100%;
-  background-color: #FAFAFA;
   padding: 18px 0;
 }
+.header_type_sign {
+  position: static;
+  padding-top: 70px;
+  padding-bottom: 40px;
+  max-width: 396px;
+  margin: 0 auto;
+}
 .header__container {
-  display: $display;
+  display: flex;
   justify-content: space-between;
-  margin: 0 70px;
+  margin: 0 75px;
   align-items: center;
+}
+.header__container_type_movies {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1140px;
+}
+.header__container_type_sign {
+  margin: 0;
 }
 .header__logo {
   background-image: url(../../images/logo.svg);

@@ -1,0 +1,30 @@
+@import "../../utils/config";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+.not-found__title {
+  @include font-settings($height: 170px, $weight: 400, $size: 140px);
+  margin: 0;
+}
+.not-found__subtitle {
+  @include font-settings($height: 20px, $weight: 400, $size: 16px);
+  margin: 5px 0 0 0;
+}
+.not-found__container {
+  position: absolute;
+  bottom: 64px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.not-found__btn {
+  @include font-settings($height: 17px, $weight: 400, $size: 14px);
+  color: #3456F3;
+}

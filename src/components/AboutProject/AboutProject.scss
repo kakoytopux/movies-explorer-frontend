@@ -1,4 +1,4 @@
-@import "../../vendor/config";
+@import "../../utils/config";
 
 .about-project {
   padding-top: 110px;
@@ -6,7 +6,7 @@
   background-color: #FAFAFA;
 }
 .project-info {
-  display: $display;
+  display: flex;
   justify-content: space-between;
   margin-top: 70px;
 }
@@ -21,11 +21,11 @@
   max-width: 550px;
 }
 .passing {
-  display: $display;
+  display: flex;
   margin-top: 110px;
 }
 .passing__container {
-  display: $display;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
@@ -35,7 +35,7 @@
 }
 .passing__background {
   padding: 9px 0;
-  display: $display;
+  display: flex;
   justify-content: center;
 }
 .passing__background_type_blue {

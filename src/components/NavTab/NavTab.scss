@@ -1,16 +1,16 @@
-@import "../../vendor/config";
+@import "../../utils/config";
 
-.sign {
-  display: $display;
+.sign-nav {
+  display: flex;
   gap: 30px;
   align-items: center;
 }
-.sign__up {
+.sign-nav__up {
   @include font-settings($height: 16px, $weight: 500, $size: 12px);
   color: #000;
   margin: 0;
 }
-.sign__in {
+.sign-nav__in {
   @include font-settings($height: 16px, $weight: 500, $size: 12px);
   color: #fff;
   background-color: #3456F3;

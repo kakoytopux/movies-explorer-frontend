@@ -7,7 +7,7 @@ export default function Promo() {
       <div className="banner__container">
         <h1 className="banner__title">Учебный проект студента факультета Веб-разработки.</h1>
         <p className="banner__subtitle">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
-        <a href="/#" className="banner__link link">Узнать больше</a>
+        <a href="/#" target="_blank" className="banner__link link">Узнать больше</a>
       </div>
       <div className="banner__planet"></div>
     </section>
