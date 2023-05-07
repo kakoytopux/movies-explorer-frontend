@@ -1,7 +1,7 @@
 @import "../../utils/config";
 
 .navigation {
-  display: flex;
+  @include flex-settings;
   gap: 16px;
   margin-left: 60px;
 }

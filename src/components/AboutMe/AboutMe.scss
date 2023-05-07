@@ -1,11 +1,10 @@
 @import "../../utils/config";
 
 .about-me {
-  @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: #FAFAFA);
+  @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: $section-bg-color);
 }
 .about-me__container {
-  display: flex;
-  justify-content: space-between;
+  @include flex-settings($justify: space-between);
   margin-top: 66px;
 }
 .about-me__heading {

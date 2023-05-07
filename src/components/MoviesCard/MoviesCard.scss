@@ -19,25 +19,23 @@
   padding-right: 28px;
 }
 .card__box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-settings($justify: space-between, $align: center);
 }
 .card__title {
   @include font-settings($height: 16px, $weight: 500, $size: 13px);
   margin: 0;
 }
 .card__like {
-  background-image: url(../../images/like.svg);
+  background-image: url(../../images/icon/like.svg);
   background-size: 100% 100%;
   width: 14px;
   height: 12px;
 }
 .card__like_active {
-  background-image: url(../../images/like-active.svg);
+  background-image: url(../../images/icon/like-active.svg);
 }
 .card__del {
-  background-image: url(../../images/del.svg);
+  background-image: url(../../images/icon/del.svg);
   width: 7px;
   height: 7px;
   display: none;

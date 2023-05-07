@@ -1,11 +1,10 @@
 @import "../../utils/config";
 
 .about-project {
-  @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: #FAFAFA);
+  @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: $section-bg-color);
 }
 .project-info {
-  display: flex;
-  justify-content: space-between;
+  @include flex-settings($justify: space-between);
   margin-top: 70px;
 }
 .project-info__title {
@@ -19,13 +18,11 @@
   max-width: 550px;
 }
 .passing {
-  display: flex;
+  @include flex-settings;
   margin-top: 110px;
 }
 .passing__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-settings($direction: column, $align: center);
   gap: 14px;
 }
 .passing__container_size_l {
@@ -33,8 +30,7 @@
 }
 .passing__background {
   padding: 9px 0;
-  display: flex;
-  justify-content: center;
+  @include flex-settings($justify: center);
 }
 .passing__background_type_blue {
   background-color: #3456F3;

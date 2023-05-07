@@ -9,19 +9,18 @@
   color: $text-color;
   margin: 0;
   text-align: center;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: $border-bottom;
   padding-bottom: 20px;
 }
 .footer__container {
-  display: flex;
-  justify-content: space-between;
   margin-top: 20px;
+  @include flex-settings($justify: space-between);
 }
 .footer__copyright {
   margin: 0;
 }
 .footer__lists {
-  display: flex;
+  @include flex-settings;
   gap: 20px;
 }
 .footer__list-link {

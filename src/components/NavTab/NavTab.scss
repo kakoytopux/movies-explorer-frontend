@@ -1,9 +1,8 @@
 @import "../../utils/config";
 
 .sign-nav {
-  display: flex;
+  @include flex-settings($align: center);
   gap: 30px;
-  align-items: center;
 }
 .sign-nav__up {
   @include font-settings($height: 16px, $weight: 500, $size: 12px);

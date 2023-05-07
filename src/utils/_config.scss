@@ -1,11 +1,39 @@
-@mixin font-settings($height: default, $weight: default, $size: default) {
-  line-height: $height;
-  font-weight: $weight;
-  font-size: $size;
+@mixin font-settings($height: false, $weight: false, $size: false) {
+  @if $height {
+    line-height: $height;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $size {
+    font-size: $size;
+  }
 }
-@mixin section-settings($p-top: default, $p-bottom: default, $bg: default) {
-  padding-top: $p-top;
-  padding-bottom: $p-bottom;
-  background-color: $bg;
+@mixin section-settings($p-top: false, $p-bottom: false, $bg: false) {
+  @if $p-top {
+    padding-top: $p-top;
+  }
+  @if $p-bottom {
+    padding-bottom: $p-bottom;
+  }
+  @if $bg {
+    background-color: $bg;
+  }
 }
+@mixin flex-settings($direction: false, $justify: false, $align: false) {
+  display: flex;
+  @if $direction {
+    flex-direction: $direction;
+  }
+  @if $justify {
+    justify-content: $justify;
+  }
+  @if $align {
+    align-items: $align;
+  }
+}
+
 $text-color: #A0A0A0;
+$background-color: #F4F4F4;
+$section-bg-color: #FAFAFA;
+$border-bottom: 1px solid #E8E8E8;

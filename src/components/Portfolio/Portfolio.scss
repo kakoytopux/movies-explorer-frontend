@@ -1,7 +1,7 @@
 @import "../../utils/config";
 
 .portfolio {
-  @include section-settings($p-bottom: 125px, $bg: #FAFAFA);
+  @include section-settings($p-bottom: 125px, $bg: $section-bg-color);
 }
 .portfolio__title {
   @include font-settings($height: 20px, $weight: 400, $size: 18px);
@@ -10,14 +10,13 @@
 }
 .portfolio__lists {
   margin-top: 50px;
-  display: flex;
-  flex-direction: column;
+  @include flex-settings($direction: column);
   gap: 20px;
 }
 .portfolio__list {
   @include font-settings($height: 50px, $weight: 400, $size: 30px);
   letter-spacing: -0.04em;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: $border-bottom;
   padding-bottom: 19px;
   position: relative;
 }

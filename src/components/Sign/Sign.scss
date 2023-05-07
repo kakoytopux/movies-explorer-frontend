@@ -13,9 +13,8 @@
   margin-top: 40px;
 }
 .sign__container {
-  display: flex;
-  flex-direction: column;
   gap: 10px;
+  @include flex-settings($direction: column);
   margin-bottom: 20px;
 }
 .sign__container:last-of-type {
@@ -26,7 +25,7 @@
   color: $text-color;
 }
 .sign__field {
-  background-color: #F4F4F4;
+  background-color: $background-color;
   border-radius: 8px;
   border: none;
   height: 46px;

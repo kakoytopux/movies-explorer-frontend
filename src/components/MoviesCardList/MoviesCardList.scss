@@ -1,23 +1,21 @@
 @import "../../utils/config";
 
 .cards {
-  display: flex;
-  flex-direction: column;
-  @include section-settings($p-top: 70px, $p-bottom: 80px, $bg: #FAFAFA);
+  @include flex-settings($direction: column);
+  @include section-settings($p-top: 70px, $p-bottom: 80px, $bg: $section-bg-color);
 }
 .cards_type_saved {
   padding-bottom: 247px;
 }
 .cards__container {
-  display: flex;
-  justify-content: center;
+  @include flex-settings($justify: center);
   flex-wrap: wrap;
   column-gap: 24px;
   row-gap: 37px;
 }
 .cards__btn {
   align-self: center;
-  background-color: #F4F4F4;
+  background-color: $background-color;
   border-radius: 6px;
   padding: 11px 60px 9px 60px;
   width: 320px;
