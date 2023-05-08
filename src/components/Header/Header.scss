@@ -53,3 +53,12 @@
   background-color: $background-color;
   border-radius: 50px;
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    @include section-settings($p-top: 15px, $p-bottom: 15px);
+  }
+  .header__link-profile {
+    display: none;
+  }
+}

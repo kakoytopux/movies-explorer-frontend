@@ -1,6 +1,6 @@
 @import "../../utils/config";
 
-.navigation {
+.navigation__lists {
   @include flex-settings;
   gap: 16px;
   margin-left: 60px;
@@ -8,9 +8,60 @@
 .navigation__list {
   @include font-settings($height: 18px, $weight: 400, $size: 13px);
 }
+.navigation__list_type_display {
+  display: none;
+}
 .navigation__list-link {
   color: #000;
 }
 .navigation__list-link_active {
-  font-weight: 500;
+  @include font-settings($weight: 500);
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    background-image: url(../../images/icon/burger-menu.svg);
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+  }
+  .navigation__lists {
+    gap: 28px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: $section-bg-color;
+    height: 100vh;
+    width: 520px;
+    margin: 0;
+    cursor: auto;
+    padding-top: 159px;
+    display: none;
+  }
+  .navigation__lists::after {
+    content: '';
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    background-image: url(../../images/icon/cross.svg);
+    background-size: 22px 22px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+  .navigation__lists_active {
+    @include flex-settings($direction: column, $align: center);
+  }
+  .navigation__list {
+    @include font-settings($height: 22px, $weight: 500, $size: 18px);
+  }
+  .navigation__list_type_display {
+    display: block;
+  }
+  .navigation__list-link_active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000;
+  }
 }

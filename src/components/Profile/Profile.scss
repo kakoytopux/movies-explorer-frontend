@@ -24,7 +24,7 @@
   @include font-settings($height: 14px, $weight: 400, $size: 11px);
 }
 .profile__text_type_bold {
-  font-weight: 500;
+  @include font-settings($weight: 500);
 }
 .profile__box {
   margin-top: 220px;
@@ -39,6 +39,6 @@
   cursor: pointer;
 }
 .profile__btn_type_exit {
-  font-weight: 500;
+  @include font-settings($weight: 500);
   color: #EE3465;
 }

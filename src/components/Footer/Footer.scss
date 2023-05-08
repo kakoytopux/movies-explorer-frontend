@@ -26,3 +26,9 @@
 .footer__list-link {
   color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    @include section-settings($bg: #FAFAFA);
+  }
+}

@@ -4,7 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 export default function MoviesCardList({ movies, savedMovies }) {
   return (
-    <section className={`cards indent-section ${savedMovies ? 'cards_type_saved' : ''}`}>
+    <section className={`cards ${savedMovies ? 'cards_type_saved' : ''}`}>
       <div className='cards__container'>
         {movies.map((card, i) =>
           <MoviesCard key={i} card={card} savedMovies={savedMovies} />

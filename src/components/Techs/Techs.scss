@@ -42,8 +42,7 @@
 
 @media screen and (max-width: 768px) {
   .techs {
-    padding-top: 91px;
-    padding-bottom: 90px;
+    @include section-settings($p-top: 91px, $p-bottom: 90px);
   }
   .techs-info__subtitle {
     @include font-settings($height: 18px, $size: 12px);
