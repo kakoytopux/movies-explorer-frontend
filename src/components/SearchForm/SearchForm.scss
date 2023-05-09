@@ -1,7 +1,7 @@
 @import "../../utils/config";
 
 .search {
-  @include section-settings($p-top: 134px, $p-bottom: 10px, $bg: $section-bg-color);
+  @include section-settings($p-top: 154px, $p-bottom: 10px, $bg: $section-bg-color);
 }
 .search__form {
   border-bottom: $border-bottom;
@@ -26,6 +26,9 @@
 }
 .search__field::placeholder {
   color: $text-color;
+}
+.search__form:focus-within .search__container-field {
+  outline: 1px solid #000;
 }
 .search__submit {
   background-color: #3456F3;
@@ -76,4 +79,14 @@
 .search__short-films {
   @include font-settings($height: 18px, $weight: 400, $size: 14px);
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .search__form {
+    padding-bottom: 51px;
+  }
 }

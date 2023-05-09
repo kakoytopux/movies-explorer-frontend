@@ -4,8 +4,12 @@
   @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: $section-bg-color);
 }
 .project-info {
-  @include flex-settings($justify: space-between);
+  @include flex-settings;
+  gap: 40px;
   margin-top: 70px;
+}
+.project-info__container {
+  max-width: 550px;
 }
 .project-info__title {
   @include font-settings($height: 24px, $weight: 400, $size: 20px);
@@ -15,7 +19,6 @@
 .project-info__desc {
   @include font-settings($height: 20px, $weight: 400, $size: 14px);
   margin: 26px 0 0 0;
-  max-width: 550px;
 }
 .passing {
   @include flex-settings;
@@ -56,6 +59,12 @@
 @media screen and (max-width: 768px) {
   .about-project {
     @include section-settings($p-top: 90px, $p-bottom: 90px);
+  }
+  .project-info {
+    gap: 30px;
+  }
+  .project-info__container {
+    max-width: 319px;
   }
   .project-info__desc {
     @include font-settings($height: 18px, $size: 12px);

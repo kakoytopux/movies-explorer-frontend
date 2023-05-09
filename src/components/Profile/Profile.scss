@@ -42,3 +42,12 @@
   @include font-settings($weight: 500);
   color: #EE3465;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__title {
+    margin-bottom: 96px;
+  }
+  .profile__box {
+    margin-top: 210px;
+  }
+}

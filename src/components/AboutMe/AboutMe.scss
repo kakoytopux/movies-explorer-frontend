@@ -23,7 +23,6 @@
 }
 .about-me__link-github {
   @include font-settings($height: 17px, $weight: 500, $size: 14px);
-  color: #000;
   display: inline-block;
   margin-top: 100px;
 }

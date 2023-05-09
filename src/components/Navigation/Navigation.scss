@@ -4,17 +4,20 @@
   @include flex-settings;
   gap: 16px;
   margin-left: 60px;
+  height: 100%;
 }
 .navigation__list {
   @include font-settings($height: 18px, $weight: 400, $size: 13px);
 }
+.navigation__list_type_profile {
+  flex-grow: 1;
+  @include flex-settings($align: flex-end);
+  margin-bottom: 250px;
+}
 .navigation__list_type_display {
   display: none;
 }
-.navigation__list-link {
-  color: #000;
-}
-.navigation__list-link_active {
+.navigation-link-active {
   @include font-settings($weight: 500);
 }
 
@@ -26,8 +29,7 @@
     height: 44px;
     cursor: pointer;
   }
-  .navigation__lists {
-    gap: 28px;
+  .navigation__container {
     position: fixed;
     z-index: 2;
     top: 0;
@@ -35,13 +37,29 @@
     background-color: $section-bg-color;
     height: 100vh;
     width: 520px;
-    margin: 0;
-    cursor: auto;
     padding-top: 159px;
+    cursor: auto;
     display: none;
   }
-  .navigation__lists::after {
-    content: '';
+  .navigation__container_active {
+    display: block;
+  }
+  .navigation__lists {
+    gap: 28px;
+    margin: 0;
+    @include flex-settings($direction: column, $align: center);
+  }
+  .navigation__list {
+    @include font-settings($height: 22px, $weight: 500, $size: 18px);
+  }
+  .navigation__list_type_display {
+    @include flex-settings;
+  }
+  .navigation-link-active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000;
+  }
+  .navigation__cross {
     position: absolute;
     top: 22px;
     right: 22px;
@@ -50,18 +68,5 @@
     width: 22px;
     height: 22px;
     cursor: pointer;
-  }
-  .navigation__lists_active {
-    @include flex-settings($direction: column, $align: center);
-  }
-  .navigation__list {
-    @include font-settings($height: 22px, $weight: 500, $size: 18px);
-  }
-  .navigation__list_type_display {
-    display: block;
-  }
-  .navigation__list-link_active {
-    padding-bottom: 4px;
-    border-bottom: 2px solid #000;
   }
 }

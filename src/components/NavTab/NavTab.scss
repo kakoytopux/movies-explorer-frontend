@@ -6,7 +6,6 @@
 }
 .sign-nav__up {
   @include font-settings($height: 16px, $weight: 500, $size: 12px);
-  color: #000;
   margin: 0;
 }
 .sign-nav__in {

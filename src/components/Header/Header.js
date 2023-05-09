@@ -12,7 +12,7 @@ export default function Header({ movies, sign }) {
         { sign ? '' :
         <>
         { movies && <Navigation />}
-        { movies ? <Link to='/profile' className="header__link-profile link">Аккаунт</Link> : <NavTab /> }
+        { movies ? <Link to='/profile' className="link-profile link">Аккаунт</Link> : <NavTab /> }
         </>
         }
       </div>

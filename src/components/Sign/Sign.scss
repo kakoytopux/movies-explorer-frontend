@@ -1,5 +1,9 @@
 @import "../../utils/config";
 
+.sign-container {
+  height: 100vh;
+  @include flex-settings($direction: column, $justify: center);
+}
 .sign {
   max-width: 396px;
   margin: 0 auto;
@@ -32,6 +36,9 @@
   padding: 0 0 0 15px;
   @include font-settings($height: 16px, $weight: 400, $size: 13px);
   outline: none;
+}
+.sign__field:focus {
+  outline: 1px solid #000;
 }
 .sign__submit {
   margin-top: 90px;
