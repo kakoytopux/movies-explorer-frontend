@@ -5,7 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import { movies } from '../../utils/const';
 import './Movies.scss';
-// import Preloader from "../Preloader/Preloader";
+import Preloader from "../Preloader/Preloader";
 
 export default function Movies() {
   return (
@@ -14,7 +14,7 @@ export default function Movies() {
     <main className="content">
       <SearchForm />
       <MoviesCardList movies={movies} />
-      {/* <Preloader /> */}
+      <Preloader />
     </main>
     <Footer />
     </>
