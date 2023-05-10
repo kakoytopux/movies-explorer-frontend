@@ -7,7 +7,6 @@
 .sign {
   max-width: 396px;
   margin: 0 auto;
-  @include section-settings($p-bottom: 70px);
 }
 .sign__title {
   @include font-settings($height: 29px, $weight: 500, $size: 24px);
@@ -63,4 +62,31 @@
 .sign__link {
   color: #3456F3;
   margin-left: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .sign__title {
+    text-align: center;
+  }
+  .sign__form {
+    margin-top: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .sign__submit {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    @include font-settings($height: 15px, $size: 12px);
+    margin-top: 179px;
+  }
+  .sign__submit_type_sign-in {
+    margin-top: 267px;
+  }
+  .sign__text {
+    margin-top: 14px;
+    @include font-settings($height: 15px, $size: 12px);
+  }
+  .sign__link {
+    margin-left: 7px;
+  }
 }

@@ -49,7 +49,7 @@
   color: $text-color;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .card {
     width: 339px;
   }
@@ -61,5 +61,24 @@
   }
   .card__time {
     margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    width: 300px;
+  }
+  .card__img {
+    height: 168px;
+  }
+  .card__title {
+    @include font-settings($height: 15px, $size: 12px);
+  }
+  .card__time {
+    @include font-settings($height: 12px, $size: 10px);
+    margin-top: 14px;
+  }
+  .card__del {
+    display: block;
   }
 }

@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer">
       <h5 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h5>
       <div className="footer__container">
-        <p className="footer__copyright">&copy; {new Date().getFullYear()}</p>
+        <p className="footer__copyright">&copy;{new Date().getFullYear()}</p>
         <ul className="footer__lists lists">
           <li className="footer__list"><a href="/#" target="_blank" className="link">Яндекс.Практикум</a></li>
           <li className="footer__list"><a href="/#" target="_blank" className="link">Github</a></li>

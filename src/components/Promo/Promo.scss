@@ -34,10 +34,10 @@
   right: 70px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .banner {
     @include flex-settings($direction: column, $align: center);
-    padding: 214px 0 76px 0;
+    @include section-settings($p-top: 214px);
   }
   .banner__container {
     @include flex-settings($direction: column, $align: center);
@@ -60,5 +60,27 @@
   .banner__planet {
     position: static;
     order: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .banner {
+    @include section-settings($p-top: 144px, $p-bottom: 30px);
+  }
+  .banner__title {
+    @include font-settings($height: 38px, $size: 30px);
+    max-width: 300px;
+    margin-top: 44px;
+    letter-spacing: -0.04em;
+  }
+  .banner__subtitle {
+    margin-top: 24px;
+  }
+  .banner__link {
+    margin-top: 90px;
+  }
+  .banner__planet {
+    width: 210px;
+    height: 206px;
   }
 }

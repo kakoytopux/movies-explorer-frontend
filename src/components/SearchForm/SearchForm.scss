@@ -1,7 +1,7 @@
 @import "../../utils/config";
 
 .search {
-  @include section-settings($p-top: 154px, $p-bottom: 10px, $bg: $section-bg-color);
+  @include section-settings($p-top: 135px, $p-bottom: 10px, $bg: $section-bg-color);
 }
 .search__form {
   border-bottom: $border-bottom;
@@ -81,12 +81,30 @@
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .search {
     padding-right: 30px;
     padding-left: 30px;
   }
   .search__form {
     padding-bottom: 51px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+  .search__field {
+    padding-left: 19px;
+    @include font-settings($size: 11px);
+  }
+  .search__container-checkbox {
+    gap: 13px;
+    margin-top: 42px;
+  }
+  .search__short-films {
+    @include font-settings($size: 11px);
   }
 }

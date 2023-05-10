@@ -35,19 +35,34 @@
   height: 38px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .header {
     @include section-settings($p-top: 18px, $p-bottom: 18px);
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-  .header__container {
-    margin-right: 0;
-    margin-left: 0;
+    padding-right: 22px;
+    padding-left: 22px;
   }
   .header_type_sign {
     @include section-settings($p-top: 0, $p-bottom: 40px);
     padding-right: 0;
     padding-left: 0;
+  }
+  .header__container {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+  .header_type_sign {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 50px;
+  }
+  .header__container_type_sign {
+    justify-content: center;
   }
 }

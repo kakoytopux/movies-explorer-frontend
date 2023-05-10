@@ -24,3 +24,19 @@
   @include font-settings($height: 17px, $weight: 400, $size: 14px);
   color: #3456F3;
 }
+
+@media screen and (max-width: 767px) {
+  .not-found__title {
+    @include font-settings($height: 97px, $size: 80px);
+  }
+  .not-found__subtitle {
+    @include font-settings($height: 15px, $size: 12px);
+    margin-top: 10px;
+  }
+  .not-found__container {
+    bottom: 30px;
+  }
+  .not-found__btn {
+    @include font-settings($height: 15px, $size: 12px);
+  }
+}

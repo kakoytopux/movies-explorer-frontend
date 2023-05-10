@@ -10,7 +10,7 @@ export default function MoviesCardList({ movies, savedMovies }) {
           <MoviesCard key={i} card={card} savedMovies={savedMovies} />
         )}
       </div>
-      {savedMovies ? '' : <button type='button' className='cards__btn'>Ещё</button>}
+      {!savedMovies && <button type='button' className='cards__btn'>Ещё</button>}
     </section>
   );
 }

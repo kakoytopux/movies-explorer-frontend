@@ -1,7 +1,7 @@
 @import "../../utils/config";
 
 .about-me {
-  @include section-settings($p-top: 110px, $p-bottom: 110px, $bg: $section-bg-color);
+  @include section-settings($p-top: 110px, $p-bottom: 100px, $bg: $section-bg-color);
 }
 .about-me__container {
   @include flex-settings($justify: space-between);
@@ -31,9 +31,9 @@
   height: 327px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .about-me {
-    @include section-settings($p-top: 90px, $p-bottom: 90px);
+    @include section-settings($p-top: 90px, $p-bottom: 95px);
   }
   .about-me__heading {
     @include font-settings($height: 40px, $size: 40px);
@@ -53,5 +53,39 @@
   .about-me__img {
     width: 255px;
     height: 307px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-me {
+    @include section-settings($p-top: 70px, $p-bottom: 70px);
+  }
+  .about-me__container {
+    flex-direction: column;
+    margin-top: 60px;
+    align-items: center;
+  }
+  .about-me__img {
+    width: 292px;
+    height: 352px;
+    order: 1;
+  }
+  .about-me__container-text {
+    order: 2;
+    margin-top: 40px;
+  }
+  .about-me__heading {
+    @include font-settings($height: 36px, $size: 30px);
+  }
+  .about-me__subheading {
+    @include font-settings($height: 16px, $size: 11px);
+    margin-top: 20px;
+  }
+  .about-me__desc {
+    @include font-settings($height: 16px, $size: 11px);
+    max-width: 292px;
+  }
+  .about-me__link-github {
+    margin-top: 40px;
   }
 }

@@ -4,15 +4,16 @@
   @include flex-settings;
   gap: 16px;
   margin-left: 60px;
-  height: 100%;
 }
 .navigation__list {
   @include font-settings($height: 18px, $weight: 400, $size: 13px);
 }
 .navigation__list_type_profile {
-  flex-grow: 1;
-  @include flex-settings($align: flex-end);
-  margin-bottom: 250px;
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  width: 100%;
+  display: none;
 }
 .navigation__list_type_display {
   display: none;
@@ -21,7 +22,7 @@
   @include font-settings($weight: 500);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .navigation {
     background-image: url(../../images/icon/burger-menu.svg);
     background-size: 44px 44px;
@@ -37,7 +38,6 @@
     background-color: $section-bg-color;
     height: 100vh;
     width: 520px;
-    padding-top: 159px;
     cursor: auto;
     display: none;
   }
@@ -46,14 +46,17 @@
   }
   .navigation__lists {
     gap: 28px;
-    margin: 0;
+    margin: 159px 0 0 0;
     @include flex-settings($direction: column, $align: center);
   }
   .navigation__list {
     @include font-settings($height: 22px, $weight: 500, $size: 18px);
   }
   .navigation__list_type_display {
-    @include flex-settings;
+    display: block;
+  }
+  .navigation__list_type_profile {
+    @include flex-settings($justify: center);
   }
   .navigation-link-active {
     padding-bottom: 4px;
@@ -68,5 +71,30 @@
     width: 22px;
     height: 22px;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navigation {
+    background-size: 40px 43px;
+    width: 40px;
+    height: 43px;
+  }
+  .navigation__container {
+    width: 100%;
+  }
+  .navigation__lists {
+    gap: 24px;
+    margin-top: 144px;
+  }
+  .navigation-link-active {
+    padding-bottom: 7px;
+  }
+  .navigation__list_type_profile {
+    bottom: 46px;
+  }
+  .navigation__cross {
+    top: 14px;
+    right: 14px;
   }
 }

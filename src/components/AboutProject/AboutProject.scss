@@ -56,20 +56,16 @@
   color: $text-color;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .about-project {
-    @include section-settings($p-top: 90px, $p-bottom: 90px);
+    @include section-settings($p-top: 92px, $p-bottom: 90px);
   }
   .project-info {
-    gap: 30px;
-  }
-  .project-info__container {
-    max-width: 319px;
+    gap: 38px;
   }
   .project-info__desc {
     @include font-settings($height: 18px, $size: 12px);
     margin-top: 22px;
-    max-width: 319px;
   }
   .passing {
     margin-top: 93px;
@@ -79,5 +75,46 @@
   }
   .passing__direction {
     @include font-settings($weight: 400);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-project {
+    @include section-settings($p-top: 70px, $p-bottom: 70px);
+  }
+  .project-info {
+    gap: 58px;
+    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-info__title {
+    @include font-settings($height: 22px, $size: 18px);
+  }
+  .project-info__desc {
+    @include font-settings($height: 16px, $size: 11px);
+    margin-top: 16px;
+  }
+  .project-info__container {
+    max-width: 284px;
+  }
+  .passing {
+    margin-top: 60px;
+  }
+  .passing__container {
+    gap: 10px;
+  }
+  .passing__time {
+    @include font-settings($height: 14px, $size: 11px);
+  }
+  .passing__background_type_blue {
+    min-width: 100px;
+  }
+  .passing__background {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+  .passing__direction {
+    @include font-settings($height: 13px, $size: 11px);
   }
 }

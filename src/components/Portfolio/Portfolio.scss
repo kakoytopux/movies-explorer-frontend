@@ -28,10 +28,10 @@
   content: '\2197';
   position: absolute;
   top: 5px;
-  right: 1px;
+  right: 3px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .portfolio {
     @include section-settings($p-bottom: 90px);
   }
@@ -40,5 +40,23 @@
   }
   .portfolio__list {
     @include font-settings($size: 28px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio {
+    @include section-settings($p-bottom: 70px);
+  }
+  .portfolio__title {
+    @include font-settings($size: 14px);
+  }
+  .portfolio__lists {
+    margin-top: 40px;
+  }
+  .portfolio__list {
+    @include font-settings($height: 28px, $size: 18px);
+  }
+  .portfolio__list::after {
+    top: 0;
   }
 }

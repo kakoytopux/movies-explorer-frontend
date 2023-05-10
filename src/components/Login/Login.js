@@ -8,11 +8,11 @@ export default function Login() {
       <>
       <div className="sign__container">
         <label htmlFor='email' className="sign__label">E-mail</label>
-        <input type="email" id="email" className="sign__field" name="email" />
+        <input type="email" id="email" className="sign__field" name="email" required />
       </div>
       <div className="sign__container">
         <label htmlFor='password' className="sign__label">Пароль</label>
-        <input type="password" id="password" className="sign__field" name="password" />
+        <input type="password" id="password" className="sign__field" name="password" required />
       </div>
       </>
     } />

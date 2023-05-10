@@ -21,6 +21,10 @@
 .link {
   text-decoration: none;
   color: #000;
+  transition: opacity .3s ease;
+}
+.link:hover {
+  opacity: .5;
 }
 .link-profile {
   @include font-settings($height: 12px, $weight: 500, $size: 13px);
@@ -47,15 +51,26 @@
   font-family: 'Inter', Helvetica, sans-serif;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1279px) {
   .indent-section {
-    padding-right: 50px;
-    padding-left: 50px;
+    padding-right: 41px;
+    padding-left: 41px;
   }
   .link-profile {
     display: none;
   }
   .link-profile_visible {
     @include flex-settings;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .indent-section {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+  .title-section {
+    @include font-settings($height: 22px, $size: 18px);
+    padding-bottom: 28px;
   }
 }

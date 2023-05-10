@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 export default function Main() {
   return (
     <>
-    <Header />
+    <Header main={true} />
     <main className="content">
       <Promo />
       <AboutProject />
