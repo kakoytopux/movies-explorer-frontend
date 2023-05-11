@@ -6,9 +6,9 @@ export default function Portfolio() {
     <section className="portfolio indent-section">
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio__lists lists">
-        <li className="portfolio__list"><a href="/#" target="_blank" className="link">Статичный сайт</a></li>
-        <li className="portfolio__list"><a href="/#" target="_blank" className="link">Адаптивный сайт</a></li>
-        <li className="portfolio__list"><a href="/#" target="_blank" className="link">Одностраничное приложение</a></li>
+        <li className="portfolio__list"><a href="https://kakoytopux.github.io/how-to-learn/" target="_blank" className="portfolio__list-link link">Статичный сайт</a></li>
+        <li className="portfolio__list"><a href="https://kakoytopux.github.io/russian-travel/" target="_blank" className="portfolio__list-link link">Адаптивный сайт</a></li>
+        <li className="portfolio__list"><a href="https://mestodd.nomoredomains.monster/sign-in" target="_blank" className="portfolio__list-link link">Одностраничное приложение</a></li>
       </ul>
     </section>
   );

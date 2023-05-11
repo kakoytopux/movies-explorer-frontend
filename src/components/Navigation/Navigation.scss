@@ -22,7 +22,7 @@
   @include font-settings($weight: 500);
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
   .navigation {
     background-image: url(../../images/icon/burger-menu.svg);
     background-size: 44px 44px;

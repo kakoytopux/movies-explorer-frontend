@@ -43,6 +43,10 @@
   cursor: pointer;
   margin-right: 6px;
   padding: 0;
+  transition: opacity .3s ease;
+}
+.search__submit:hover {
+  opacity: .7;
 }
 .search__container-checkbox {
   gap: 12px;
@@ -67,6 +71,7 @@
   width: 16px;
   height: 16px;
   margin-left: 2px;
+  margin-top: 2px;
 }
 .search__checkbox:checked + .search__checkbox-custom {
   background-color: #2BE080;

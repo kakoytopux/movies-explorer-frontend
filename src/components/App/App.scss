@@ -56,6 +56,9 @@
     padding-right: 41px;
     padding-left: 41px;
   }
+}
+
+@media screen and (max-width: 768px) {
   .link-profile {
     display: none;
   }

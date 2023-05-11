@@ -25,22 +25,28 @@
   @include font-settings($height: 16px, $weight: 500, $size: 13px);
   margin: 0;
 }
-.card__like {
+.card__btn {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.card__btn_type_like {
   background-image: url(../../images/icon/like.svg);
   background-size: 100% 100%;
   width: 14px;
   height: 12px;
 }
-.card__like_active {
+.card__btn_type_like-active {
   background-image: url(../../images/icon/like-active.svg);
 }
-.card__del {
+.card__btn_type_del {
   background-image: url(../../images/icon/del.svg);
   width: 7px;
   height: 7px;
   display: none;
 }
-.card:hover .card__del {
+.card:hover .card__btn_type_del {
   display: block;
 }
 .card__time {
@@ -78,7 +84,7 @@
     @include font-settings($height: 12px, $size: 10px);
     margin-top: 14px;
   }
-  .card__del {
+  .card__btn_type_del {
     display: block;
   }
 }
