@@ -10,7 +10,7 @@ export default function Sign({ sign, form }) {
       <Header sign={true} />
       <main className="content">
         <section className="sign">
-          <h2 className="sign__title">{sign ? 'Добро пожаловать!' : 'Рады видеть!'}</h2>
+          <h1 className="sign__title">{sign ? 'Добро пожаловать!' : 'Рады видеть!'}</h1>
           <form className="sign__form" method="post" name="sign">
             {form}
             <button type="submit" className={`sign__submit ${!sign && 'sign__submit_type_sign-in'}`}>

@@ -59,6 +59,21 @@ export const movies = [
     name: 'По волнам: Искусство звука в кино',
     time: '1ч 7м',
   },
+  {
+    link: require('../images/card/card1.png'),
+    name: '33 слова о дизайне',
+    time: '1ч 47м',
+  },
+  {
+    link: require('../images/card/card2.png'),
+    name: 'Киноальманах «100 лет дизайна»',
+    time: '1ч 3м',
+  },
+  {
+    link: require('../images/card/card3.png'),
+    name: 'В погоне за Бенкси',
+    time: '1ч 42м',
+  },
 ];
 
 export const savedMovies = [

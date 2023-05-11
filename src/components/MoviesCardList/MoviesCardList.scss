@@ -25,6 +25,9 @@
   @include font-settings($height: 15px, $weight: 500, $size: 12px);
   margin-top: 60px;
 }
+.cards__btn_hidden {
+  display: none;
+}
 
 @media screen and (max-width: 1279px) {
   .cards_type_saved {

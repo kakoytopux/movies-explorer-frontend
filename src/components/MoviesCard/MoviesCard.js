@@ -16,7 +16,7 @@ export default function MoviesCard({ card, savedMovies }) {
       <img src={card.link} alt={card.name} className='card__img' />
       <div className={`card__container ${savedMovies ? 'card__container_saved' : ''}`}>
         <div className='card__box'>
-          <h5 className='card__title'>{card.name}</h5>
+          <h2 className='card__title'>{card.name}</h2>
           <div className={`${savedMovies ? 'card__del' : 'card__like'} ${like ? 'card__like_active' : ''}`}
           onClick={changeLike}></div>
         </div>

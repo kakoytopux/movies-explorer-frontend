@@ -1,3 +1,5 @@
+@import "../../utils/config";
+
 @keyframes preloader-inside-white {
   0% {
       -webkit-transform: scale(0, 0);
@@ -40,9 +42,14 @@
 }
 
 .preloader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: $section-bg-color;
+}
+.preloader_active {
+  @include flex-settings($align: center, $justify: center);
 }
 .preloader__container {
   width: 100px;

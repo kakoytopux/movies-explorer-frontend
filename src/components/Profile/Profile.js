@@ -8,7 +8,7 @@ export default function Profile() {
     <Header movies={true} />
     <main className="content">
       <section className="profile">
-        <h2 className="profile__title">Привет, Виталий!</h2>
+        <h1 className="profile__title">Привет, Виталий!</h1>
         <div className="profile__container">
           <p className="profile__text profile__text_type_bold">Имя</p>
           <p className="profile__text">Виталий</p>
