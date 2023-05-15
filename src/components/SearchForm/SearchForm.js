@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import './SearchForm.scss';
-import { useState } from "react";
 
-export default function SearchForm() {
+export default function SearchForm({ movies }) {
   const [checked, setChecked] = useState(true);
+  const [searchVal, setSearchVal] = useState('');
+  const [errValid, setErrValid] = useState('');
 
   function setCheckbox(evt) {
     setChecked(evt.target.checked);
   }
-  
+  function handleChange(evt) {
+    setSearchVal(evt.target.value);
+  }
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    if(!searchVal) {
+      setErrValid('Нужно ввести ключевое слово.');
+      return;
+    }
+    setErrValid('');
+    movies();
+  }
+
   return (
     <section className="search indent-section">
-      <form className="search__form" method="post" name="search">
+      <form className="search__form" method="post" name="search" noValidate onSubmit={handleSubmit}>
         <div className="search__container-field">
-          <input type="text" placeholder="Фильм" className="search__field" name="movies" required />
+          <input type="text" placeholder="Фильм" className="search__field" name="movies" required value={searchVal} onChange={handleChange} />
           <button type="submit" className="search__submit"></button>
+          <span className="search__err">{errValid}</span>
         </div>
         <div className="search__container-checkbox">
           <input type="checkbox" className="search__checkbox" name="short" id="short"
