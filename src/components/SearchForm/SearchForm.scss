@@ -1,0 +1,115 @@
+@import "../../utils/config";
+
+.search {
+  @include section-settings($p-top: 135px, $p-bottom: 10px, $bg: $section-bg-color);
+}
+.search__form {
+  border-bottom: $border-bottom;
+  padding-bottom: 69px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.search__container-field {
+  background-color: $background-color;
+  border-radius: 40px;
+  @include flex-settings($align: center);
+}
+.search__field {
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 46px;
+  padding: 0 0 0 22px;
+  box-sizing: border-box;
+  background-color: transparent;
+  @include font-settings($height: 17px, $weight: 400, $size: 13px);
+}
+.search__field::placeholder {
+  color: $text-color;
+}
+.search__form:focus-within .search__container-field {
+  outline: 1px solid #000;
+}
+.search__submit {
+  background-color: #3456F3;
+  background-image: url(../../images/icon/search.svg);
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 48px;
+  cursor: pointer;
+  margin-right: 6px;
+  padding: 0;
+  transition: opacity .3s ease;
+}
+.search__submit:hover {
+  opacity: .7;
+}
+.search__container-checkbox {
+  gap: 12px;
+  margin-top: 41px;
+  @include flex-settings($justify: center, $align: center);
+}
+.search__checkbox {
+  display: none;
+}
+.search__checkbox-custom {
+  background-color: #b4b4b4;
+  border-radius: 20px;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+  @include flex-settings($align: center);
+}
+.search__checkbox-custom::after {
+  content: '';
+  border-radius: 50%;
+  background-color: #fff;
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+  margin-top: 2px;
+}
+.search__checkbox:checked + .search__checkbox-custom {
+  background-color: #2BE080;
+  justify-content: flex-end;
+}
+.search__checkbox:checked + .search__checkbox-custom::after {
+  margin-left: 0;
+  margin-right: 2px;
+}
+.search__short-films {
+  @include font-settings($height: 18px, $weight: 400, $size: 14px);
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .search {
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .search__form {
+    padding-bottom: 51px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+  .search__field {
+    padding-left: 19px;
+    @include font-settings($size: 11px);
+  }
+  .search__container-checkbox {
+    gap: 13px;
+    margin-top: 42px;
+  }
+  .search__short-films {
+    @include font-settings($size: 11px);
+  }
+}

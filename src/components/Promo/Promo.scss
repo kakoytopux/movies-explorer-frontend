@@ -1,0 +1,86 @@
+@import "../../utils/config";
+
+.banner {
+  position: relative;
+  box-sizing: border-box;
+  @include section-settings($p-top: 149px, $p-bottom: 75px, $bg: #DDDEE3);
+}
+.banner__title {
+  @include font-settings($height: 58px, $weight: 400, $size: 50px);
+  margin: 0;
+  max-width: 640px;
+}
+.banner__subtitle {
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
+  margin: 36px 0 0 0;
+  max-width: 310px;
+  opacity: .5;
+}
+.banner__link {
+  @include font-settings($height: 16px, $weight: 500, $size: 12px);
+  border: 1px solid rgba(0, 0, 0, .6);
+  border-radius: 3px;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 146px;
+}
+.banner__planet {
+  background-image: url(../../images/banner-planet.png);
+  background-size: 100% 100%;
+  width: 310px;
+  height: 304px;
+  position: absolute;
+  top: 149px;
+  right: 70px;
+}
+
+@media screen and (max-width: 1279px) {
+  .banner {
+    @include flex-settings($direction: column, $align: center);
+    @include section-settings($p-top: 214px);
+  }
+  .banner__container {
+    @include flex-settings($direction: column, $align: center);
+    order: 2;
+  }
+  .banner__title {
+    @include font-settings($height: 50px, $size: 40px);
+    text-align: center;
+    max-width: 680px;
+    margin-top: 48px;
+  }
+  .banner__subtitle {
+    margin-top: 22px;
+    max-width: 260px;
+    text-align: center;
+  }
+  .banner__link {
+    margin-top: 92px;
+  }
+  .banner__planet {
+    position: static;
+    order: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .banner {
+    @include section-settings($p-top: 144px, $p-bottom: 30px);
+  }
+  .banner__title {
+    @include font-settings($height: 38px, $size: 30px);
+    max-width: 300px;
+    margin-top: 44px;
+    letter-spacing: -0.04em;
+  }
+  .banner__subtitle {
+    margin-top: 24px;
+  }
+  .banner__link {
+    margin-top: 90px;
+  }
+  .banner__planet {
+    width: 210px;
+    height: 206px;
+  }
+}

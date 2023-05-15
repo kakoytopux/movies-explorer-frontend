@@ -1,0 +1,64 @@
+@import "../../utils/config";
+
+.cards {
+  @include flex-settings($direction: column);
+  @include section-settings($p-top: 70px, $p-bottom: 80px, $bg: $section-bg-color);
+}
+.cards_type_saved {
+  @include section-settings($p-bottom: 247px);
+}
+.cards__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 364px);
+  justify-content: center;
+  column-gap: 24px;
+  row-gap: 37px;
+}
+.cards__btn {
+  align-self: center;
+  background-color: $background-color;
+  border-radius: 6px;
+  padding: 11px 0 9px 0;
+  width: 320px;
+  border: none;
+  cursor: pointer;
+  @include font-settings($height: 15px, $weight: 500, $size: 12px);
+  margin-top: 60px;
+}
+.cards__btn_hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1279px) {
+  .cards_type_saved {
+    @include section-settings($p-bottom: 170px);
+  }
+  .cards__btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 81px;
+  }
+  .cards__container {
+    grid-template-columns: repeat(auto-fill, 339px);
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    @include section-settings($p-top: 40px);
+  }
+  .cards_type_saved {
+    @include section-settings($p-bottom: 166px);
+  }
+  .cards__container {
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 14px;
+  }
+  .cards__btn {
+    padding-top: 11px;
+    padding-bottom: 9px;
+    width: 240px;
+    margin-top: 77px;
+  }
+}

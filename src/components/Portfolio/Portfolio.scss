@@ -1,0 +1,62 @@
+@import "../../utils/config";
+
+.portfolio {
+  @include section-settings($p-bottom: 125px, $bg: $section-bg-color);
+}
+.portfolio__title {
+  @include font-settings($height: 20px, $weight: 400, $size: 18px);
+  color: $text-color;
+  margin: 0;
+}
+.portfolio__lists {
+  margin-top: 50px;
+  @include flex-settings($direction: column);
+  gap: 20px;
+}
+.portfolio__list {
+  @include font-settings($height: 50px, $weight: 400, $size: 30px);
+  letter-spacing: -0.04em;
+  border-bottom: $border-bottom;
+  padding-bottom: 19px;
+  position: relative;
+}
+.portfolio__list:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.portfolio__list-link::after {
+  content: '\2197';
+  position: absolute;
+  top: 5px;
+  right: 3px;
+}
+
+@media screen and (max-width: 1279px) {
+  .portfolio {
+    @include section-settings($p-bottom: 90px);
+  }
+  .portfolio__lists {
+    margin-top: 43px;
+  }
+  .portfolio__list {
+    @include font-settings($size: 28px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio {
+    @include section-settings($p-bottom: 70px);
+  }
+  .portfolio__title {
+    @include font-settings($size: 14px);
+  }
+  .portfolio__lists {
+    margin-top: 40px;
+  }
+  .portfolio__list {
+    @include font-settings($height: 28px, $size: 18px);
+  }
+  .portfolio__list::after {
+    top: 0;
+  }
+}

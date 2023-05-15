@@ -1,0 +1,65 @@
+@import "../../utils/config";
+
+.footer {
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
+  @include section-settings($p-top: 79px, $p-bottom: 20px, $bg: #F8F8F8);
+}
+.footer__title {
+  @include font-settings($height: 16px, $weight: 400, $size: 13px);
+  color: $text-color;
+  margin: 0;
+  text-align: center;
+  border-bottom: $border-bottom;
+  padding-bottom: 20px;
+}
+.footer__container {
+  margin-top: 20px;
+  @include flex-settings($justify: space-between);
+  padding-right: 71px;
+  padding-left: 73px;
+}
+.footer__copyright {
+  margin: 0;
+}
+.footer__lists {
+  @include flex-settings;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1279px) {
+  .footer {
+    @include section-settings($bg: #FAFAFA);
+  }
+  .footer__container {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    @include font-settings($height: 15px, $size: 12px);
+  }
+  .footer__title {
+    @include font-settings($height: 15px, $size: 12px);
+    padding-bottom: 21px;
+  }
+  .footer__container {
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .footer__copyright {
+    order: 2;
+    margin-top: 30px;
+    color: $text-color;
+  }
+  .footer__lists {
+    order: 1;
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
