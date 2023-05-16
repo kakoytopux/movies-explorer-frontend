@@ -4,7 +4,6 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import Footer from "../Footer/Footer";
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { savedMovies } from '../../utils/const';
 
 export default function SavedMovies() {
   return (
@@ -12,7 +11,7 @@ export default function SavedMovies() {
     <Header movies={true} />
     <main className="content">
       <SearchForm />
-      <MoviesCardList movies={savedMovies} savedMovies={true} />
+      {/* <MoviesCardList moviesList={savedMovies} savedMovies={true} /> */}
     </main>
     <Footer />
     </>

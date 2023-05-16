@@ -3,7 +3,6 @@ import Header from '../Header/Header';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import { movies } from '../../utils/const';
 import './Movies.scss';
 import Preloader from "../Preloader/Preloader";
 import { moviesApi } from '../../utils/MoviesApi';
@@ -11,27 +10,54 @@ import { moviesApi } from '../../utils/MoviesApi';
 export default function Movies() {
   const [preloader, setPreloader] = useState(false);
   const [moviesList, setMoviesList] = useState([]);
+  const [moviesMess, setMoviesMess] = useState('');
 
-  function getMoviesApi() {
+  function setMoviesData(item) {
+    setMoviesMess('');
+    setMoviesList([item]);
+  }
+  function setMoviesDataNotFound(text) {
+    setMoviesList([]);
+    setMoviesMess(text);
+  }
+  function setMoviesApi(field, checkbox) {
+    setPreloader(true);
+    setMoviesDataNotFound('');
+
     moviesApi.getMovies()
     .then(res => {
-      setPreloader(false);
-      setMoviesList(res);
-      console.log(moviesList)
+      setMoviesFound(res, field, checkbox);
     })
-    .catch(err => console.log(err))
-    .finally(() => setPreloader(true))
+    .catch(() => setMoviesDataNotFound('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
+    .finally(() => setPreloader(false));
   }
-  function getMoviesSearch() {
+  function setMoviesFound(res, field, checkbox) {
+    setMoviesDataNotFound('Ничего не найдено.');
     
+    res.filter(item => {
+      if(field === item.nameRU && checkbox === true && item.duration <= 40) {
+        setMoviesData(item);
+        return true;
+      }
+      if(field === item.nameRU && checkbox === false) {
+        setMoviesData(item);
+        return true;
+      }
+      
+      return false;
+    });
   }
 
   return (
     <>
     <Header movies={true} />
     <main className="content">
-      <SearchForm movies={getMoviesApi} />
-      <MoviesCardList setPreloader={setPreloader} preloader={preloader} moviesList={moviesList} />
+      <SearchForm movies={setMoviesApi} />
+      <MoviesCardList
+      setPreloader={setPreloader}
+      preloader={preloader}
+      moviesList={moviesList}
+      moviesMess={moviesMess} />
       <Preloader preloader={preloader} />
     </main>
     <Footer />

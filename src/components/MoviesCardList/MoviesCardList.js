@@ -3,10 +3,10 @@ import './MoviesCardList.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useState, useEffect } from 'react';
 
-export default function MoviesCardList({ savedMovies, setPreloader, preloader, moviesList }) {
+export default function MoviesCardList({ setPreloader, preloader, moviesList, moviesMess, savedMovies }) {
   const [numberCards, setNumberCards] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
-
+  
   useEffect(() => {
     window.onresize = () => {
       setTimeout(() => {
@@ -34,12 +34,13 @@ export default function MoviesCardList({ savedMovies, setPreloader, preloader, m
 
   return (
     <section className={`cards ${savedMovies ? 'cards_type_saved' : ''}`}>
+      {moviesMess ? <span className='cards__mess'>{moviesMess}</span> : ''}
       <div className='cards__container'>
-        {moviesList.slice(0, savedMovies ? Infinity : numberCards).map(card =>
+        {moviesList.slice(0, numberCards).map(card =>
           <MoviesCard key={card.id} card={card} savedMovies={savedMovies} />
         )}
       </div>
-      {!savedMovies &&
+      {moviesList.length >= numberCards &&
       <button type='button' className={`cards__btn ${preloader ? 'cards__btn_hidden' : ''}`}
       onClick={showCards}>Ещё</button>}
     </section>

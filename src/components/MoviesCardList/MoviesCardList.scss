@@ -7,6 +7,11 @@
 .cards_type_saved {
   @include section-settings($p-bottom: 247px);
 }
+.cards__mess {
+  @include font-settings($height: 20px, $weight: 400, $size: 17px);
+  align-self: center;
+  display: block;
+}
 .cards__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 364px);

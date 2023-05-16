@@ -11,13 +11,17 @@ export default function MoviesCard({ card, savedMovies }) {
     }
   }
   function getTimeMovies() {
-    const hour = Math.floor((card.duration / 60)) + 'ч';
-    return hour + ' ' + (card.duration - 60 + 'м');
+    if(card.duration > 60) {
+      const hour = Math.floor((card.duration / 60)) + 'ч';
+      return hour + ' ' + (card.duration - 60 + 'м');
+    } else {
+      return card.duration + 'м';
+    }
   }
 
   return (
     <article className='card'>
-      <a href={card.trailerLink} className='card__trailer-link' target='_blank' rel="noreferrer">
+      {/* <a href={card.trailerLink} className='card__trailer-link' target='_blank' rel="noreferrer"> */}
         <img src={'https://api.nomoreparties.co/' + card.image.url} alt={card.nameRU} className='card__img' />
         <div className={`card__container ${savedMovies ? 'card__container_saved' : ''}`}>
           <div className='card__box'>
@@ -27,7 +31,7 @@ export default function MoviesCard({ card, savedMovies }) {
           </div>
           <p className='card__time'>{getTimeMovies()}</p>
         </div>
-      </a>
+      {/* </a> */}
     </article>
   );
 }

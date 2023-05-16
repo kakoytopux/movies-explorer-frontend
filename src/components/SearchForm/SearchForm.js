@@ -14,12 +14,13 @@ export default function SearchForm({ movies }) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
+    
     if(!searchVal) {
       setErrValid('Нужно ввести ключевое слово.');
       return;
     }
     setErrValid('');
-    movies();
+    movies(searchVal, checked);
   }
 
   return (
