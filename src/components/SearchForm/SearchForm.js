@@ -3,6 +3,7 @@ import './SearchForm.scss';
 
 export default function SearchForm({ movies }) {
   const [checked, setChecked] = useState(true);
+  const [onFocusField, setOnFocusField] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const [errValid, setErrValid] = useState('');
 
@@ -22,12 +23,15 @@ export default function SearchForm({ movies }) {
     setErrValid('');
     movies(searchVal, checked);
   }
+  function setFocusField() {
+    setOnFocusField(!onFocusField);
+  }
 
   return (
     <section className="search indent-section">
       <form className="search__form" method="post" name="search" noValidate onSubmit={handleSubmit}>
-        <div className="search__container-field">
-          <input type="text" placeholder="Фильм" className="search__field" name="movies" required value={searchVal} onChange={handleChange} />
+        <div className={`search__container-field ${onFocusField ? 'search__container-field_focus' : ''}`}>
+          <input type="text" placeholder="Фильм" onFocus={setFocusField} onBlur={setFocusField} className="search__field" name="movies" required value={searchVal} onChange={handleChange} />
           <button type="submit" className="search__submit"></button>
           <span className="search__err">{errValid}</span>
         </div>

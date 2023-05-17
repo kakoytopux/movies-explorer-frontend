@@ -15,6 +15,9 @@
   @include flex-settings($align: center);
   position: relative;
 }
+.search__container-field_focus {
+  outline: 1px solid #000;
+}
 .search__field {
   outline: none;
   border: none;
@@ -27,9 +30,6 @@
 }
 .search__field::placeholder {
   color: $text-color;
-}
-.search__form:focus-within .search__container-field {
-  outline: 1px solid #000;
 }
 .search__submit {
   background-color: #3456F3;
@@ -62,7 +62,9 @@
   @include flex-settings($justify: center, $align: center);
 }
 .search__checkbox {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 .search__checkbox-custom {
   background-color: #b4b4b4;
@@ -88,6 +90,9 @@
 .search__checkbox:checked + .search__checkbox-custom::after {
   margin-left: 0;
   margin-right: 2px;
+}
+.search__checkbox:focus + .search__checkbox-custom {
+  outline: 1px solid #000;
 }
 .search__short-films {
   @include font-settings($height: 18px, $weight: 400, $size: 14px);

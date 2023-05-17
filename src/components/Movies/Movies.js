@@ -39,7 +39,7 @@ export default function Movies() {
         setMoviesData(item);
         return true;
       }
-      if(field === item.nameRU && checkbox === false) {
+      if(field === item.nameRU && checkbox === false && item.duration > 40) {
         setMoviesData(item);
         return true;
       }
@@ -51,7 +51,7 @@ export default function Movies() {
   return (
     <>
     <Header movies={true} />
-    <main className="content">
+    <main className="content content-movies">
       <SearchForm movies={setMoviesApi} />
       <MoviesCardList
       setPreloader={setPreloader}

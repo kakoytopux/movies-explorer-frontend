@@ -3,7 +3,7 @@ import './Sign.scss';
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 
-export default function Sign({ sign, form }) {
+export default function Sign({ sign, form, onSubmit }) {
   return (
     <>
     <div className="sign-container">
@@ -11,7 +11,7 @@ export default function Sign({ sign, form }) {
       <main className="content">
         <section className="sign">
           <h1 className="sign__title">{sign ? 'Добро пожаловать!' : 'Рады видеть!'}</h1>
-          <form className="sign__form" method="post" name="sign">
+          <form className="sign__form" method="post" name="sign" noValidate onSubmit={onSubmit}>
             {form}
             <button type="submit" className={`sign__submit ${!sign && 'sign__submit_type_sign-in'}`}>
               {sign ? 'Зарегистрироваться' : 'Войти'}

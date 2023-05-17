@@ -9,9 +9,9 @@ export default function SavedMovies() {
   return (
     <>
     <Header movies={true} />
-    <main className="content">
+    <main className="content content-movies">
       <SearchForm />
-      {/* <MoviesCardList moviesList={savedMovies} savedMovies={true} /> */}
+      <MoviesCardList moviesList={[]} savedMovies={true} />
     </main>
     <Footer />
     </>
