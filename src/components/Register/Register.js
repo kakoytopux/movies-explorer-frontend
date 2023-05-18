@@ -25,7 +25,7 @@ export default function Register() {
       email: fieldEmailValue,
       password: fieldPasswordValue,
     })
-    .then(res => console.log('okey'))
+    .then(res => console.log(res))
     .catch(err => console.log(err));
   }
 
