@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import './Register.scss';
 import Sign from "../Sign/Sign";
 import { mainApi } from '../../utils/MainApi';
+import { useNavigate } from 'react-router-dom';
 
-export default function Register() {
+export default function Register({ login }) {
   const [fieldNameValue, setFieldNameValue] = useState('');
   const [fieldEmailValue, setFieldEmailValue] = useState('');
   const [fieldPasswordValue, setFieldPasswordValue] = useState('');
+  const navigate = useNavigate();
 
   function handleFieldName(evt) {
     setFieldNameValue(evt.target.value);
@@ -25,7 +27,17 @@ export default function Register() {
       email: fieldEmailValue,
       password: fieldPasswordValue,
     })
-    .then(res => console.log(res))
+    .then(() => {
+      mainApi.loginUser({
+        email: fieldEmailValue,
+        password: fieldPasswordValue,
+      })
+      .then(() => {
+        login();
+        navigate('/movies');
+      })
+      .catch(err => console.log(err));
+    })
     .catch(err => console.log(err));
   }
 

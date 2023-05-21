@@ -7,7 +7,7 @@ import './Movies.scss';
 import Preloader from "../Preloader/Preloader";
 import { moviesApi } from '../../utils/MoviesApi';
 
-export default function Movies() {
+export default function Movies({ auth }) {
   const [preloader, setPreloader] = useState(false);
   const [moviesList, setMoviesList] = useState([]);
   const [moviesMess, setMoviesMess] = useState('');
@@ -20,6 +20,7 @@ export default function Movies() {
     setMoviesList([]);
     setMoviesMess(text);
   }
+
   function setMoviesApi(field, checkbox) {
     setPreloader(true);
     setMoviesDataNotFound('');
@@ -31,6 +32,7 @@ export default function Movies() {
     .catch(() => setMoviesDataNotFound('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
     .finally(() => setPreloader(false));
   }
+
   function setMoviesFound(res, field, checkbox) {
     setMoviesDataNotFound('Ничего не найдено.');
     
@@ -50,14 +52,15 @@ export default function Movies() {
 
   return (
     <>
-    <Header movies={true} />
+    <Header movies={true} auth={auth} />
     <main className="content content-movies">
       <SearchForm movies={setMoviesApi} />
       <MoviesCardList
       setPreloader={setPreloader}
       preloader={preloader}
       moviesList={moviesList}
-      moviesMess={moviesMess} />
+      moviesMess={moviesMess}
+      />
       <Preloader preloader={preloader} />
     </main>
     <Footer />

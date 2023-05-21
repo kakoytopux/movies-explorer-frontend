@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MoviesCardList.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useState, useEffect } from 'react';
 
-export default function MoviesCardList({ setPreloader, preloader, moviesList, moviesMess, savedMovies }) {
+export default function MoviesCardList({
+  setPreloader,
+  preloader,
+  moviesList,
+  moviesMess,
+  savedMovies,
+  deleteLikeSavedMovies
+}) {
   const [numberCards, setNumberCards] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
   
@@ -36,11 +42,11 @@ export default function MoviesCardList({ setPreloader, preloader, moviesList, mo
     <section className={`cards ${savedMovies ? 'cards_type_saved' : ''}`}>
       {moviesMess ? <span className='cards__mess'>{moviesMess}</span> : ''}
       <div className='cards__container'>
-        {moviesList.slice(0, numberCards).map(card =>
-          <MoviesCard key={card.id} card={card} savedMovies={savedMovies} />
+        {moviesList?.slice(0, savedMovies ? Infinity : numberCards).map(card =>
+          <MoviesCard key={savedMovies ? card.movieId : card.id} card={card} savedMovies={savedMovies} deleteLikeSavedMovies={deleteLikeSavedMovies} />
         )}
       </div>
-      {moviesList.length >= numberCards &&
+      {savedMovies ? '' : moviesList.length >= numberCards &&
       <button type='button' className={`cards__btn ${preloader ? 'cards__btn_hidden' : ''}`}
       onClick={showCards}>Ещё</button>}
     </section>

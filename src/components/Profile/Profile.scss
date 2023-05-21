@@ -19,6 +19,19 @@
   padding-top: 16px;
   padding-bottom: 0;
 }
+.profile__field {
+  outline: none;
+  padding: 0;
+  border: 1px solid #000;
+  text-align: right;
+  color: #000;
+  cursor: text;
+}
+.profile__field:disabled {
+  border: none;
+  background-color: transparent;
+  cursor: text;
+}
 .profile__text {
   margin: 0;
   @include font-settings($height: 14px, $weight: 400, $size: 11px);
@@ -41,6 +54,14 @@
 .profile__btn_type_exit {
   @include font-settings($weight: 500);
   color: #EE3465;
+}
+.profile__btn_active {
+  border: 1px dashed #000;
+  padding: 10px;
+  transition: background-color .3s ease;
+}
+.profile__btn_active:hover {
+  background-color: rgba(0, 0, 0, .1);
 }
 
 @media screen and (max-width: 1279px) {

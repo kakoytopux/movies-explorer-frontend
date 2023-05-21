@@ -1,4 +1,11 @@
 class MainApi {
+  _getResult(res) {
+    if(!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status + ' ' + res.statusText}`);
+    }
+
+    return res.json();
+  }
   registerUser({ name, email, password }) {
     return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signup', {
       method: 'POST',
@@ -11,11 +18,12 @@ class MainApi {
         password: password,
       }),
     })
-    .then(res => res.json())
+    .then(res => this._getResult(res))
   }
   loginUser({ email, password }) {
     return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signin', {
       method: 'POST',
+      credentials: 'include', 
       headers: {
         'Content-Type': 'application/json',
       },
@@ -24,7 +32,17 @@ class MainApi {
         password: password,
       }),
     })
-    .then(res => res.json())
+    .then(res => this._getResult(res))
+  }
+  exitProfile() {
+    return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signout', {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(res => this._getResult(res))
   }
   getUser() {
     return fetch(`https://movies-explorer-pux.nomoredomains.monster/api/users/me`, {
@@ -34,7 +52,21 @@ class MainApi {
         'Content-Type': 'application/json',
       },
     })
-    .then(res => res.json())
+    .then(res => this._getResult(res))
+  }
+  editProfile({ name, email }) {
+    return fetch(`https://movies-explorer-pux.nomoredomains.monster/api/users/me`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+      }),
+    })
+    .then(res => this._getResult(res))
   }
   getLikeMovieUser() {
     return fetch('https://movies-explorer-pux.nomoredomains.monster/api/movies', {
@@ -44,7 +76,7 @@ class MainApi {
         'Content-Type': 'application/json',
       },
     })
-    .then(res => res.json())
+    .then(res => this._getResult(res))
   }
   likeMovieUser({
     country,
@@ -78,7 +110,7 @@ class MainApi {
         movieId: id,
       }),
     })
-    .then(res => res.json())
+    .then(res => this._getResult(res))
   }
   deleteLikeMovieUser({ _id }) {
     return fetch(`https://movies-explorer-pux.nomoredomains.monster/api/movies/${_id}`, {
@@ -88,7 +120,7 @@ class MainApi {
         'Content-Type': 'application/json',
       },
     })
-    .then(res => res.json())
+    .then(res => this._getResult(res))
   }
 }
 
