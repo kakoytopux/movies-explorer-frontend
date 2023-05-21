@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from '../Header/Header';
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -15,9 +15,11 @@ export default function Movies({ auth }) {
   function setMoviesData(item) {
     setMoviesMess('');
     setMoviesList([item]);
+    localStorage.setItem('film', JSON.stringify(item));
   }
   function setMoviesDataNotFound(text) {
     setMoviesList([]);
+    localStorage.removeItem('film');
     setMoviesMess(text);
   }
 
@@ -35,7 +37,7 @@ export default function Movies({ auth }) {
 
   function setMoviesFound(res, field, checkbox) {
     setMoviesDataNotFound('Ничего не найдено.');
-    
+
     res.filter(item => {
       if(field === item.nameRU && checkbox === true && item.duration <= 40) {
         setMoviesData(item);
@@ -49,6 +51,14 @@ export default function Movies({ auth }) {
       return false;
     });
   }
+
+  useEffect(() => {
+    const film = JSON.parse(localStorage.getItem('film'));
+
+    if(film !== null) {
+      setMoviesList([film]);
+    }
+  }, []);
 
   return (
     <>

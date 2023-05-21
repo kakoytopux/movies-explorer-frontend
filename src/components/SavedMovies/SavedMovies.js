@@ -16,9 +16,7 @@ export default function SavedMovies({ auth }) {
 
   useEffect(() => {
     mainApi.getLikeMovieUser()
-    .then(res => {
-      setSavedMoviesList(res.film);
-    })
+    .then(res => setSavedMoviesList(res.film))
     .catch(err => console.log(err));
   }, []);
   
@@ -30,7 +28,7 @@ export default function SavedMovies({ auth }) {
     <>
     <Header movies={true} auth={auth} />
     <main className="content content-movies">
-      <SearchForm movies={setMoviesApi} />
+      <SearchForm movies={setMoviesApi} savedMovies={true} />
       <MoviesCardList
       moviesList={searchSavedMovies ?? savedMoviesList}
       savedMovies={true}

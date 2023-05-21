@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './SearchForm.scss';
 
-export default function SearchForm({ movies }) {
+export default function SearchForm({ movies, savedMovies }) {
   const [checked, setChecked] = useState(true);
   const [onFocusField, setOnFocusField] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const [errValid, setErrValid] = useState('');
 
   function setCheckbox(evt) {
-    setChecked(evt.target.checked);
+    setChecked(evt.target.checked); 
   }
   function handleChange(evt) {
     setSearchVal(evt.target.value);
@@ -18,14 +18,33 @@ export default function SearchForm({ movies }) {
     
     if(!searchVal) {
       setErrValid('Нужно ввести ключевое слово.');
-      return;
+    } else {
+      setErrValid('');
+      movies(searchVal, checked);
+      
+      if(!savedMovies) {
+        localStorage.setItem('checkbox', JSON.stringify(checked));
+        localStorage.setItem('search', searchVal);
+      }
     }
-    setErrValid('');
-    movies(searchVal, checked);
   }
   function setFocusField() {
     setOnFocusField(!onFocusField);
   }
+
+  useEffect(() => {
+    if(!savedMovies) {
+      const checkbox = JSON.parse(localStorage.getItem('checkbox'));
+      const search = localStorage.getItem('search');
+
+      if(checkbox !== null) {
+        setChecked(checkbox);
+      }
+      if(search !== null) {
+        setSearchVal(search);
+      }
+    }
+  }, [savedMovies]);
 
   return (
     <section className="search indent-section">
