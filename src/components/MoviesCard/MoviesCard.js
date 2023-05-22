@@ -51,7 +51,8 @@ export default function MoviesCard({ card, savedMovies, deleteLikeSavedMovies })
 
   return (
     <article className='card'>
-      <a href={card.trailerLink} className='card__trailer-link' target='_blank'></a>
+      <a href={card.trailerLink} className='card__trailer-link' target='_blank' rel="noreferrer">
+      </a>
       <img src={savedMovies ? card.image : 'https://api.nomoreparties.co/' + card.image.url} alt={card.nameRU} className='card__img' />
       <div className={`card__container ${savedMovies ? 'card__container_saved' : ''}`}>
         <div className='card__box'>

@@ -50,6 +50,11 @@
   border: none;
   cursor: pointer;
 }
+.sign__submit:disabled {
+  cursor: default;
+  background-color: #808080;
+  opacity: .6;
+}
 .sign__submit_type_sign-in {
   margin-top: 178px;
 }
@@ -62,6 +67,15 @@
 .sign__link {
   color: #3456F3;
   margin-left: 6px;
+}
+.sign__error {
+  color: #EE3465;
+  @include font-settings($height: 12px, $weight: 400, $size: 10px);
+  height: 0;
+  display: block;
+}
+.sign__error_hidden {
+  display: none;
 }
 
 @media screen and (max-width: 767px) {

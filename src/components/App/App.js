@@ -9,7 +9,7 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import NotFound from '../NotFound/NotFound';
 import { mainApi } from '../../utils/MainApi';
-import { currentUser } from '../../Contexts/context';
+import { CurrentUser } from '../../contexts/CurrentUser';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 
 export default function App() {
@@ -22,15 +22,15 @@ export default function App() {
       setUserInfo(res);
       setLogin();
     })
-    .catch(err => console.log(err));
-  }, []);
+    .catch(() => setAuth(false));
+  }, [auth]);
 
   function setLogin() {
     setAuth(true);
   }
 
   return (
-    <currentUser.Provider value={userInfo}>
+    <CurrentUser.Provider value={userInfo}>
       <Routes>
         <Route path='/' element={<Main auth={auth} />} />
         <Route path='/movies' element={<ProtectedRoute auth={auth} element={Movies} />} />
@@ -40,6 +40,6 @@ export default function App() {
         <Route path='/signup' element={<Register login={setLogin} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-    </currentUser.Provider>
+    </CurrentUser.Provider>
   );
 }

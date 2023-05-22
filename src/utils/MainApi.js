@@ -23,7 +23,7 @@ class MainApi {
   loginUser({ email, password }) {
     return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signin', {
       method: 'POST',
-      credentials: 'include', 
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

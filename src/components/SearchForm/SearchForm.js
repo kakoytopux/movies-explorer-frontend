@@ -23,8 +23,8 @@ export default function SearchForm({ movies, savedMovies }) {
       movies(searchVal, checked);
       
       if(!savedMovies) {
-        localStorage.setItem('checkbox', JSON.stringify(checked));
-        localStorage.setItem('search', searchVal);
+        sessionStorage.setItem('checkbox', JSON.stringify(checked));
+        sessionStorage.setItem('search', searchVal);
       }
     }
   }
@@ -34,8 +34,8 @@ export default function SearchForm({ movies, savedMovies }) {
 
   useEffect(() => {
     if(!savedMovies) {
-      const checkbox = JSON.parse(localStorage.getItem('checkbox'));
-      const search = localStorage.getItem('search');
+      const checkbox = JSON.parse(sessionStorage.getItem('checkbox'));
+      const search = sessionStorage.getItem('search');
 
       if(checkbox !== null) {
         setChecked(checkbox);

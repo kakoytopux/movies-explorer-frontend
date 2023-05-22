@@ -68,6 +68,15 @@
 .profile__btn_active:hover {
   background-color: rgba(0, 0, 0, .1);
 }
+.profile__btn_active:disabled {
+  border: 1px dashed #808080;
+  color: #808080;
+  opacity: .6;
+  cursor: default;
+}
+.profile__btn_active:disabled:hover {
+  background-color: unset;
+}
 
 @media screen and (max-width: 1279px) {
   .profile__title {

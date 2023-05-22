@@ -1,19 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './Profile.scss';
 import Header from "../Header/Header";
-import { currentUser } from '../../Contexts/context';
+import { CurrentUser } from '../../contexts/CurrentUser';
 import { mainApi } from "../../utils/MainApi";
+import { useFormWithValidation } from '../useForm/useForm';
 
 export default function Profile({ auth, setAuth }) {
-  const { user } = useContext(currentUser);
+  const { user } = useContext(CurrentUser);
   const [disabled, setDisabled] = useState(true);
-  const [nameVal, setNameVal] = useState(user.name);
-  const [emailVal, setEmailVal] = useState(user.email);
   const [userInfo, setUserInfo] = useState(user);
+  const { values, handleChange, errors, isValid, setValues } = useFormWithValidation();
+
+  useEffect(() => {
+    setValues(userInfo);
+  }, [setValues, userInfo]);
 
   function exitProfile() {
     mainApi.exitProfile()
-    .then(() => setAuth(false))
+    .then(() => {
+      setAuth(false);
+      sessionStorage.clear();
+    })
     .catch(err => console.log(err));
   }
 
@@ -21,24 +28,18 @@ export default function Profile({ auth, setAuth }) {
     if(disabled) {
       setDisabled(false);
     } else {
-      if(nameVal === userInfo.name && emailVal === userInfo.email) {
+      if(values.name === userInfo.name && values.email === userInfo.email) {
         setDisabled(true);
       }
     }
   }
 
-  function setNameUser(evt) {
-    setNameVal(evt.target.value);
-  }
-  function setNameEmail(evt) {
-    setEmailVal(evt.target.value);
-  }
   function handleSubmit(evt) {
     evt.preventDefault();
 
     if(!disabled) {
-      if(nameVal !== userInfo.name || emailVal !== userInfo.email) {
-        mainApi.editProfile({ name: nameVal, email: emailVal })
+      if(values.name !== userInfo.name || values.email !== userInfo.email) {
+        mainApi.editProfile({ name: values.name, email: values.email })
         .then(res => {
           setUserInfo(res.user);
           setDisabled(true);
@@ -53,26 +54,27 @@ export default function Profile({ auth, setAuth }) {
     <Header movies={true} auth={auth} />
     <main className="content">
       <section className="profile">
-        <h1 className="profile__title">Привет, {userInfo.name}!</h1>
-        <form method="post" className="profile__form" name="edit" onSubmit={handleSubmit}>
+        <h1 className="profile__title">Привет, {userInfo?.name}!</h1>
+        <form method="post" className="profile__form" name="edit" noValidate onSubmit={handleSubmit}>
           <div className="profile__container">
             <p className="profile__text profile__text_type_bold">Имя</p>
             <input type="text" required disabled={disabled} className="profile__field profile__text"
-            value={nameVal}
+            value={values.name || ''}
             name="name"
-            onChange={setNameUser}
+            onChange={handleChange}
             />
           </div>
           <div className="profile__container">
             <p className="profile__text profile__text_type_bold">E-mail</p>
             <input type="email" required disabled={disabled} className="profile__field profile__text"
-            value={emailVal}
+            value={values.email || ''}
             name="email"
-            onChange={setNameEmail}
+            onChange={handleChange}
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
             />
           </div>
           <div className="profile__box">
-            <button type={disabled ? 'button' : 'submit'} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>Редактировать</button>
+            <button type={disabled ? 'button' : 'submit'} disabled={!disabled && isValid} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>Редактировать</button>
             {disabled &&
             <button type="button" className="profile__btn profile__btn_type_exit" onClick={exitProfile}>Выйти из аккаунта</button>
             }
