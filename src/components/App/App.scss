@@ -46,7 +46,7 @@
   border-radius: 50px;
 }
 .error-text {
-  color: #EE3465;
+  color: $error-color;
   @include font-settings($height: 12px, $weight: 400, $size: 10px);
   margin: 0;
   height: 0;
@@ -63,9 +63,16 @@
   height: 100vh;
   background-color: $section-bg-color;
   position: relative;
+  @include section-settings($p-bottom: 80px);
+}
+.content-movies_type_saved {
+  @include section-settings($p-bottom: 247px);
 }
 
 @media screen and (max-width: 1279px) {
+  .content-movies_type_saved {
+    @include section-settings($p-bottom: 170px);
+  }
   .indent-section {
     padding-right: 41px;
     padding-left: 41px;
@@ -73,6 +80,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .content-movies_type_saved {
+    @include section-settings($p-bottom: 166px);
+  }
   .link-profile {
     display: none;
   }

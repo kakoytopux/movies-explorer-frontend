@@ -9,8 +9,12 @@ export default function Profile({ auth, setAuth }) {
   const { user } = useContext(CurrentUser);
   const [noEdit, setNoEdit] = useState(true);
   const [disabled, setDisabled] = useState(true);
-  const [userInfo, setUserInfo] = useState(user);
+  const [userInfo, setUserInfo] = useState(null);
   const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormWithValidation();
+
+  useEffect(() => {
+    setUserInfo(user);
+  }, [user]);
 
   useEffect(() => {
     setValues(userInfo);
@@ -21,10 +25,10 @@ export default function Profile({ auth, setAuth }) {
   }, [values]);
 
   useEffect(() => {
-    if(values.name === userInfo.name && values.email === userInfo.email) {
+    if(values?.name === userInfo?.name && values?.email === userInfo?.email) {
       setIsValid(false);
     }
-  }, [values, disabled, userInfo.name, userInfo.email, setIsValid]);
+  }, [values, disabled, userInfo?.name, userInfo?.email, setIsValid]);
 
   function exitProfile() {
     mainApi.exitProfile()
@@ -74,7 +78,7 @@ export default function Profile({ auth, setAuth }) {
             <p className="profile__text profile__text_type_bold">Имя</p>
             <label className="profile__label" htmlFor="name">
               <input type="text" required disabled={disabled} className="profile__field profile__text"
-              value={values.name || ''}
+              value={values?.name || ''}
               name="name"
               id="name"
               onChange={handleChange}
@@ -86,7 +90,7 @@ export default function Profile({ auth, setAuth }) {
             <p className="profile__text profile__text_type_bold">E-mail</p>
             <label className="profile__label" htmlFor="email">
               <input type="email" required disabled={disabled} className="profile__field profile__text"
-              value={values.email || ''}
+              value={values?.email || ''}
               name="email"
               id="email"
               onChange={handleChange}

@@ -50,7 +50,7 @@
   opacity: .7;
 }
 .search__err {
-  color: #EE3465;
+  color: $error-color;
   @include font-settings($height: 12px, $weight: 400, $size: 10px);
   position: absolute;
   bottom: -20px;

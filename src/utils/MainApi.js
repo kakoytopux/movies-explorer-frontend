@@ -1,4 +1,8 @@
 class MainApi {
+  constructor(options) {
+    this._defaultUrl = options.defaultUrl;
+    this._headers = options.headers;
+  }
   _getResult(res) {
     if(!res.ok) {
       return Promise.reject(`Ошибка: ${res.status + ' ' + res.statusText}`);
@@ -7,11 +11,9 @@ class MainApi {
     return res.json();
   }
   registerUser({ name, email, password }) {
-    return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signup', {
+    return fetch(`${this._defaultUrl}/signup`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         email: email,
@@ -21,12 +23,10 @@ class MainApi {
     .then(res => this._getResult(res))
   }
   loginUser({ email, password }) {
-    return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signin', {
+    return fetch(`${this._defaultUrl}/signin`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         email: email,
         password: password,
@@ -35,32 +35,26 @@ class MainApi {
     .then(res => this._getResult(res))
   }
   exitProfile() {
-    return fetch('https://movies-explorer-pux.nomoredomains.monster/api/signout', {
+    return fetch(`${this._defaultUrl}/signout`, {
       method: 'DELETE',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
     })
     .then(res => this._getResult(res))
   }
   getUser() {
-    return fetch(`https://movies-explorer-pux.nomoredomains.monster/api/users/me`, {
+    return fetch(`${this._defaultUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
     })
     .then(res => this._getResult(res))
   }
   editProfile({ name, email }) {
-    return fetch(`https://movies-explorer-pux.nomoredomains.monster/api/users/me`, {
+    return fetch(`${this._defaultUrl}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         email: email,
@@ -69,12 +63,10 @@ class MainApi {
     .then(res => this._getResult(res))
   }
   getLikeMovieUser() {
-    return fetch('https://movies-explorer-pux.nomoredomains.monster/api/movies', {
+    return fetch(`${this._defaultUrl}/movies`, {
       method: 'GET',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
     })
     .then(res => this._getResult(res))
   }
@@ -90,12 +82,10 @@ class MainApi {
     nameEN,
     id,
   }) {
-    return fetch('https://movies-explorer-pux.nomoredomains.monster/api/movies', {
+    return fetch(`${this._defaultUrl}/movies`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
       body: JSON.stringify({
         country: country,
         director: director,
@@ -113,15 +103,18 @@ class MainApi {
     .then(res => this._getResult(res))
   }
   deleteLikeMovieUser({ _id }) {
-    return fetch(`https://movies-explorer-pux.nomoredomains.monster/api/movies/${_id}`, {
+    return fetch(`${this._defaultUrl}/movies/${_id}`, {
       method: 'DELETE',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this._headers,
     })
     .then(res => this._getResult(res))
   }
 }
 
-export const mainApi = new MainApi();
+export const mainApi = new MainApi({
+  defaultUrl: 'https://movies-explorer-pux.nomoredomains.monster/api',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+});

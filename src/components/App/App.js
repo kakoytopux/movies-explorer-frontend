@@ -13,7 +13,7 @@ import { CurrentUser } from '../../contexts/CurrentUser';
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute';
 
 export default function App() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {

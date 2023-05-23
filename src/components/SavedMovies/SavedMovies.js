@@ -50,7 +50,7 @@ export default function SavedMovies({ auth }) {
   return (
     <>
     <Header movies={true} auth={auth} />
-    <main className="content content-movies">
+    <main className="content content-movies content-movies_type_saved">
       <SearchForm movies={setMoviesApi} savedMovies={true} />
       <MoviesCardList
       moviesList={searchSavedMovies ?? savedMoviesList}
