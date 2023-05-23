@@ -33,26 +33,27 @@ export default function Login({ login }) {
   return (
     <Sign sign={false} form={
       <>
-      <div className="sign__container">
-        <label htmlFor='email' className="sign__label">E-mail</label>
-        <input type="email" id="email" className="sign__field"
-        name="email"
-        required
-        value={values.email || ''}
-        onChange={handleChange}
-        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-        />
-        <span className="sign__error">{errors.email}</span>
-      </div>
-      <div className="sign__container">
-        <label htmlFor='password' className="sign__label">Пароль</label>
-        <input type="password" id="password" className="sign__field"
-        name="password"
-        required
-        value={values.password || ''}
-        onChange={handleChange} />
-        <span className="sign__error">{errors.password}</span>
-      </div>
+        <label htmlFor='email' className="sign__label">
+          <p className="sign__heading">E-mail</p>
+          <input type="email" id="email" className="sign__field"
+          name="email"
+          required
+          value={values.email || ''}
+          onChange={handleChange}
+          pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+          />
+          <p className="error-text">{errors.email}</p>
+        </label>
+        <label htmlFor='password' className="sign__label">
+          <p className="sign__heading">Пароль</p>
+          <input type="password" id="password" className="sign__field"
+          name="password"
+          required
+          value={values.password || ''}
+          onChange={handleChange}
+          />
+          <p className="error-text">{errors.password}</p>
+        </label>
       </>
     } onSubmit={handleSubmit} isValid={isValid} noAuth={noAuth} />
   );

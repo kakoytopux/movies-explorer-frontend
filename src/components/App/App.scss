@@ -45,6 +45,15 @@
   background-color: $background-color;
   border-radius: 50px;
 }
+.error-text {
+  color: #EE3465;
+  @include font-settings($height: 12px, $weight: 400, $size: 10px);
+  margin: 0;
+  height: 0;
+}
+.error-text_type_profile {
+  text-align: right;
+}
 
 .body {
   position: relative;

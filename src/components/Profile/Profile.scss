@@ -17,7 +17,11 @@
 .profile__container:nth-of-type(2n) {
   border-bottom: none;
   padding-top: 16px;
-  padding-bottom: 0;
+  padding-bottom: 10px;
+}
+.profile__label {
+  @include flex-settings($direction: column);
+  width: 150px;
 }
 .profile__field {
   outline: none;
@@ -42,7 +46,7 @@
   @include font-settings($weight: 500);
 }
 .profile__box {
-  margin-top: 220px;
+  margin-top: 210px;
   @include flex-settings($direction: column, $align: center);
   gap: 17px;
 }
@@ -83,7 +87,7 @@
     margin-bottom: 96px;
   }
   .profile__box {
-    margin-top: 210px;
+    margin-top: 200px;
   }
 }
 
@@ -101,7 +105,7 @@
     @include font-settings($height: 13px, $size: 11px);
   }
   .profile__box {
-    margin-top: 383px;
+    margin-top: 369px;
     gap: 16px;
   }
   .profile__btn {

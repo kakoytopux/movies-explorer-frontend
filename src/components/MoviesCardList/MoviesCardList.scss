@@ -10,7 +10,8 @@
 .cards__mess {
   @include font-settings($height: 20px, $weight: 400, $size: 17px);
   align-self: center;
-  display: block;
+  max-width: 500px;
+  text-align: center;
 }
 .cards__container {
   display: grid;

@@ -13,7 +13,7 @@ export default function Sign({ sign, form, onSubmit, isValid, noAuth }) {
           <h1 className="sign__title">{sign ? 'Добро пожаловать!' : 'Рады видеть!'}</h1>
           <form className="sign__form form" method="post" name="sign" noValidate onSubmit={onSubmit}>
             {form}
-            <span className={`sign__error ${noAuth ? 'sign__error_hidden' : ''}`}>Что-то пошло не так...</span>
+            <p className='error-text'>{!noAuth && 'Что-то пошло не так...'}</p>
             <button type="submit" disabled={!isValid} className={`sign__submit ${!sign && 'sign__submit_type_sign-in'}`}>
               {sign ? 'Зарегистрироваться' : 'Войти'}
             </button>

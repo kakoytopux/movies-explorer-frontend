@@ -7,13 +7,24 @@ import { useFormWithValidation } from '../useForm/useForm';
 
 export default function Profile({ auth, setAuth }) {
   const { user } = useContext(CurrentUser);
+  const [noEdit, setNoEdit] = useState(true);
   const [disabled, setDisabled] = useState(true);
   const [userInfo, setUserInfo] = useState(user);
-  const { values, handleChange, errors, isValid, setValues } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormWithValidation();
 
   useEffect(() => {
     setValues(userInfo);
   }, [setValues, userInfo]);
+
+  useEffect(() => {
+    setNoEdit(true);
+  }, [values]);
+
+  useEffect(() => {
+    if(values.name === userInfo.name && values.email === userInfo.email) {
+      setIsValid(false);
+    }
+  }, [values, disabled, userInfo.name, userInfo.email, setIsValid]);
 
   function exitProfile() {
     mainApi.exitProfile()
@@ -37,14 +48,17 @@ export default function Profile({ auth, setAuth }) {
   function handleSubmit(evt) {
     evt.preventDefault();
 
+    setNoEdit(true);
+
     if(!disabled) {
       if(values.name !== userInfo.name || values.email !== userInfo.email) {
         mainApi.editProfile({ name: values.name, email: values.email })
         .then(res => {
           setUserInfo(res.user);
           setDisabled(true);
+          setIsValid(false);
         })
-        .catch(err => console.log(err));
+        .catch(() => setNoEdit(false));
       }
     }
   }
@@ -58,23 +72,32 @@ export default function Profile({ auth, setAuth }) {
         <form method="post" className="profile__form" name="edit" noValidate onSubmit={handleSubmit}>
           <div className="profile__container">
             <p className="profile__text profile__text_type_bold">Имя</p>
-            <input type="text" required disabled={disabled} className="profile__field profile__text"
-            value={values.name || ''}
-            name="name"
-            onChange={handleChange}
-            />
+            <label className="profile__label" htmlFor="name">
+              <input type="text" required disabled={disabled} className="profile__field profile__text"
+              value={values.name || ''}
+              name="name"
+              id="name"
+              onChange={handleChange}
+              />
+              <p className="error-text error-text_type_profile">{errors.name}</p>
+            </label>
           </div>
           <div className="profile__container">
             <p className="profile__text profile__text_type_bold">E-mail</p>
-            <input type="email" required disabled={disabled} className="profile__field profile__text"
-            value={values.email || ''}
-            name="email"
-            onChange={handleChange}
-            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
-            />
+            <label className="profile__label" htmlFor="email">
+              <input type="email" required disabled={disabled} className="profile__field profile__text"
+              value={values.email || ''}
+              name="email"
+              id="email"
+              onChange={handleChange}
+              pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+              />
+              <p className="error-text error-text_type_profile">{errors.email}</p>
+            </label>
           </div>
+          <p className="error-text">{!noEdit && 'Что-то пошло не так...'}</p>
           <div className="profile__box">
-            <button type={disabled ? 'button' : 'submit'} disabled={!disabled && isValid} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>Редактировать</button>
+            <button type={disabled ? 'button' : 'submit'} disabled={!disabled && !isValid} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>Редактировать</button>
             {disabled &&
             <button type="button" className="profile__btn profile__btn_type_exit" onClick={exitProfile}>Выйти из аккаунта</button>
             }

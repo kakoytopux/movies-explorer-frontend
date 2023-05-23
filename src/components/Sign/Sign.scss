@@ -15,17 +15,19 @@
 .sign__form {
   margin-top: 40px;
 }
-.sign__container {
+.sign__label {
   gap: 10px;
   @include flex-settings($direction: column);
   margin-bottom: 20px;
-}
-.sign__container:last-of-type {
-  margin-bottom: 0;
-}
-.sign__label {
   @include font-settings($height: 12px, $weight: 400, $size: 10px);
   color: $text-color;
+  position: relative;
+}
+.sign__label:last-of-type {
+  margin-bottom: 0;
+}
+.sign__heading {
+  margin: 0;
 }
 .sign__field {
   background-color: $background-color;
@@ -35,6 +37,8 @@
   padding: 0 0 0 15px;
   @include font-settings($height: 16px, $weight: 400, $size: 13px);
   outline: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 .sign__field:focus {
   outline: 1px solid #000;
@@ -68,13 +72,7 @@
   color: #3456F3;
   margin-left: 6px;
 }
-.sign__error {
-  color: #EE3465;
-  @include font-settings($height: 12px, $weight: 400, $size: 10px);
-  height: 0;
-  display: block;
-}
-.sign__error_hidden {
+.sign__error-hidden {
   display: none;
 }
 

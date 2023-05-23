@@ -51,7 +51,7 @@ export default function SearchForm({ movies, savedMovies }) {
       <form className="search__form" method="post" name="search" noValidate onSubmit={handleSubmit}>
         <div className={`search__container-field ${onFocusField ? 'search__container-field_focus' : ''}`}>
           <input type="text" placeholder="Фильм" onFocus={setFocusField} onBlur={setFocusField} className="search__field" name="movies" required value={searchVal} onChange={handleChange} />
-          <button type="submit" className="search__submit"></button>
+          <button type="submit" className="search__submit" title="Поиск"></button>
           <span className="search__err">{errValid}</span>
         </div>
         <div className="search__container-checkbox">
