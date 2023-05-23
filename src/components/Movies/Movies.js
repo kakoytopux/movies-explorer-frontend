@@ -15,11 +15,11 @@ export default function Movies({ auth }) {
   function setMoviesData(item) {
     setMoviesMess('');
     setMoviesList([item]);
-    localStorage.setItem('film', JSON.stringify(item));
+    sessionStorage.setItem('film', JSON.stringify(item));
   }
   function setMoviesDataNotFound(text) {
     setMoviesList([]);
-    localStorage.removeItem('film');
+    sessionStorage.removeItem('film');
     setMoviesMess(text);
   }
 
@@ -53,7 +53,7 @@ export default function Movies({ auth }) {
   }
 
   useEffect(() => {
-    const film = JSON.parse(localStorage.getItem('film'));
+    const film = JSON.parse(sessionStorage.getItem('film'));
 
     if(film !== null) {
       setMoviesList([film]);
