@@ -2,7 +2,10 @@
 
 .cards {
   @include flex-settings($direction: column);
-  @include section-settings($p-top: 70px, $bg: $section-bg-color);
+  @include section-settings($p-top: 70px, $p-bottom: 80px, $bg: $section-bg-color);
+}
+.cards_type_saved {
+  @include section-settings($p-bottom: 247px);
 }
 .cards__mess {
   @include font-settings($height: 20px, $weight: 400, $size: 17px);
@@ -33,6 +36,9 @@
 }
 
 @media screen and (max-width: 1279px) {
+  .cards_type_saved {
+    @include section-settings($p-bottom: 170px);
+  }
   .cards__btn {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -47,6 +53,9 @@
 @media screen and (max-width: 767px) {
   .cards {
     @include section-settings($p-top: 40px);
+  }
+  .cards_type_saved {
+    @include section-settings($p-bottom: 166px);
   }
   .cards__container {
     grid-template-columns: repeat(auto-fill, 300px);

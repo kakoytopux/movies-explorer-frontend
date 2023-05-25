@@ -59,20 +59,12 @@
   position: relative;
   font-family: 'Inter', Helvetica, sans-serif;
 }
-.content-movies {
+.content_type_movies {
   height: 100vh;
   background-color: $section-bg-color;
-  position: relative;
-  @include section-settings($p-bottom: 80px);
-}
-.content-movies_type_saved {
-  @include section-settings($p-bottom: 247px);
 }
 
 @media screen and (max-width: 1279px) {
-  .content-movies_type_saved {
-    @include section-settings($p-bottom: 170px);
-  }
   .indent-section {
     padding-right: 41px;
     padding-left: 41px;
@@ -80,9 +72,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .content-movies_type_saved {
-    @include section-settings($p-bottom: 166px);
-  }
   .link-profile {
     display: none;
   }

@@ -8,7 +8,7 @@ export default function SearchForm({ movies, savedMovies }) {
   const [errValid, setErrValid] = useState('');
 
   function setCheckbox(evt) {
-    setChecked(evt.target.checked); 
+    setChecked(evt.target.checked);
   }
   function handleChange(evt) {
     setSearchVal(evt.target.value);

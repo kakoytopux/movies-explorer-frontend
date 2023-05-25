@@ -5,6 +5,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from "../Footer/Footer";
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import { mainApi } from '../../utils/MainApi';
+import { getItemFilter } from '../../utils/utils';
 
 export default function SavedMovies({ auth }) {
   const [savedMoviesList, setSavedMoviesList] = useState([]);
@@ -12,7 +13,7 @@ export default function SavedMovies({ auth }) {
   const [moviesMess, setMoviesMess] = useState('');
 
   function setMoviesData(item) {
-    setSearchSavedMovies([item]);
+    setSearchSavedMovies(prevMoviesList => [...prevMoviesList, item]);
     setMoviesMess('');
   }
   function setMoviesDataNotFound(text) {
@@ -20,21 +21,19 @@ export default function SavedMovies({ auth }) {
     setMoviesMess(text);
   }
 
-  function setMoviesApi(field, checkbox) {
-    setMoviesDataNotFound('');
-
-    savedMoviesList.filter(item => setMoviesFound(item, field, checkbox));
-  }
-
-  function setMoviesFound(item, field, checkbox) {
+  function setMoviesFound(field, checkbox) {
     setMoviesDataNotFound('Ничего не найдено.');
 
-    if(field === item.nameRU && checkbox === true && item.duration <= 40) {
-      setMoviesData(item);
-    }
-    if(field === item.nameRU && checkbox === false && item.duration > 40) {
-      setMoviesData(item);
-    }
+    savedMoviesList.forEach(item => {
+      const resItemFilter = getItemFilter(field, item);
+
+      if(resItemFilter && checkbox === true && item.duration <= 40) {
+        setMoviesData(item);
+      }
+      if(resItemFilter && checkbox === false && item.duration > 40) {
+        setMoviesData(item);
+      }
+    });
   }
 
   useEffect(() => {
@@ -50,8 +49,8 @@ export default function SavedMovies({ auth }) {
   return (
     <>
     <Header movies={true} auth={auth} />
-    <main className="content content-movies content-movies_type_saved">
-      <SearchForm movies={setMoviesApi} savedMovies={true} />
+    <main className={`content ${searchSavedMovies === null ? '' : searchSavedMovies.length > 0 ? '' : 'content_type_movies'}`}>
+      <SearchForm movies={setMoviesFound} savedMovies={true} />
       <MoviesCardList
       moviesList={searchSavedMovies ?? savedMoviesList}
       savedMovies={true}

@@ -8,7 +8,7 @@ export default function MoviesCardList({
   moviesList,
   moviesMess,
   savedMovies,
-  deleteLikeSavedMovies
+  deleteLikeSavedMovies,
 }) {
   const [numberCards, setNumberCards] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
@@ -35,7 +35,7 @@ export default function MoviesCardList({
     setTimeout(() => {
       width >= 1280 ? setNumberCards(numberCards + 3) : setNumberCards(numberCards + 2);
       setPreloader(false);
-    }, 1500);
+    }, 1000);
   }
 
   return (

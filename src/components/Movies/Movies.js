@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import './Movies.scss';
 import Preloader from "../Preloader/Preloader";
 import { moviesApi } from '../../utils/MoviesApi';
+import { getItemFilter } from '../../utils/utils';
 
 export default function Movies({ auth }) {
   const [preloader, setPreloader] = useState(false);
@@ -14,8 +15,12 @@ export default function Movies({ auth }) {
 
   function setMoviesData(item) {
     setMoviesMess('');
-    setMoviesList([item]);
-    sessionStorage.setItem('film', JSON.stringify(item));
+    setMoviesList(prevMoviesList => {
+      const newMovieList = [...prevMoviesList, item]
+      sessionStorage.setItem('film', JSON.stringify(newMovieList));
+
+      return newMovieList;
+    });
   }
   function setMoviesDataNotFound(text) {
     setMoviesList([]);
@@ -27,28 +32,38 @@ export default function Movies({ auth }) {
     setPreloader(true);
     setMoviesDataNotFound('');
 
-    moviesApi.getMovies()
-    .then(res => {
-      setMoviesFound(res, field, checkbox);
-    })
-    .catch(() => setMoviesDataNotFound('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
-    .finally(() => setPreloader(false));
+    const moviesStorage = JSON.parse(sessionStorage.getItem('movies'));
+
+    if(moviesStorage) {
+      setTimeout(() => {
+        setMoviesFound(moviesStorage, field, checkbox);
+        setPreloader(false);
+      }, 1000);
+    } else {
+      moviesApi.getMovies()
+      .then(res => {
+        setMoviesFound(res, field, checkbox);
+        sessionStorage.setItem('movies', JSON.stringify(res));
+      })
+      .catch(() => setMoviesDataNotFound('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
+      .finally(() => setPreloader(false));
+    }
   }
 
   function setMoviesFound(res, field, checkbox) {
     setMoviesDataNotFound('Ничего не найдено.');
 
-    res.filter(item => {
-      if(field === item.nameRU && checkbox === true && item.duration <= 40) {
+    res.forEach(item => {
+      const resItemFilter = getItemFilter(field, item);
+
+      if(resItemFilter && checkbox === true && item.duration <= 40) {
         setMoviesData(item);
-        return true;
+        return;
       }
-      if(field === item.nameRU && checkbox === false && item.duration > 40) {
+      if(resItemFilter && checkbox === false && item.duration > 40) {
         setMoviesData(item);
-        return true;
+        return;
       }
-      
-      return false;
     });
   }
 
@@ -56,14 +71,14 @@ export default function Movies({ auth }) {
     const film = JSON.parse(sessionStorage.getItem('film'));
 
     if(film !== null) {
-      setMoviesList([film]);
+      setMoviesList(film);
     }
   }, []);
 
   return (
     <>
     <Header movies={true} auth={auth} />
-    <main className="content content-movies">
+    <main className={`content ${moviesList.length > 0 ? '' : 'content_type_movies'}`}>
       <SearchForm movies={setMoviesApi} />
       <MoviesCardList
       setPreloader={setPreloader}
