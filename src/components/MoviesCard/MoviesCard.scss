@@ -35,7 +35,6 @@
 .card__title {
   @include font-settings($height: 16px, $weight: 500, $size: 13px);
   margin: 0;
-  max-width: 200px;
 }
 .card__btn {
   border: none;

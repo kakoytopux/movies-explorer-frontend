@@ -49,7 +49,7 @@ export default function SavedMovies({ auth }) {
   return (
     <>
     <Header movies={true} auth={auth} />
-    <main className={`content ${searchSavedMovies === null ? '' : searchSavedMovies.length > 0 ? '' : 'content_type_movies'}`}>
+    <main className={`content ${searchSavedMovies === null || savedMoviesList.length < 0 ? 'content_type_movies' : ''}`}>
       <SearchForm movies={setMoviesFound} savedMovies={true} />
       <MoviesCardList
       moviesList={searchSavedMovies ?? savedMoviesList}
