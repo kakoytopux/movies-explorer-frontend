@@ -7,9 +7,12 @@ export default function MoviesCard({ card, savedMovies, deleteLikeSavedMovies })
   const [moviesList, setMoviesList] = useState([]);
   
   function getTimeMovies() {
-    if(card.duration >= 60) {
-      const hour = Math.floor((card.duration / 60)) + 'ч';
-      return hour + ' ' + (card.duration - 60 + 'м');
+    const hour = Math.floor((card.duration / 60)) + 'ч';
+    
+    if(card.duration % 60 === 0) {
+      return hour;
+    } else if(card.duration > 60) {
+      return hour + ' ' + (card.duration % 60 + 'м');
     } else {
       return card.duration + 'м';
     }

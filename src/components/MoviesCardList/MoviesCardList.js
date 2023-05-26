@@ -39,7 +39,7 @@ export default function MoviesCardList({
   }
 
   return (
-    <section className={`cards ${savedMovies ? 'cards_type_saved' : ''}`}>
+    <section className={`cards ${moviesList.length < numberCards || savedMovies ? 'cards_type_more-padding' : ''}`}>
       {moviesMess ? <p className='cards__mess'>{moviesMess}</p> : ''}
       <div className='cards__container'>
         {moviesList?.slice(0, savedMovies ? Infinity : numberCards).map(card =>
