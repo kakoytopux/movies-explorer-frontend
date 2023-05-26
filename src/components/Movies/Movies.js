@@ -78,7 +78,7 @@ export default function Movies({ auth }) {
   return (
     <>
     <Header movies={true} auth={auth} />
-    <main className={`content ${moviesList.length > 0 ? '' : 'content_type_movies'}`}>
+    <main className='content content_type_movies'>
       <SearchForm movies={setMoviesApi} />
       <MoviesCardList
       setPreloader={setPreloader}

@@ -40,7 +40,7 @@ export default function MoviesCardList({
 
   return (
     <section className={`cards ${savedMovies ? 'cards_type_saved' : ''}`}>
-      {moviesMess ? <span className='cards__mess'>{moviesMess}</span> : ''}
+      {moviesMess ? <p className='cards__mess'>{moviesMess}</p> : ''}
       <div className='cards__container'>
         {moviesList?.slice(0, savedMovies ? Infinity : numberCards).map(card =>
           <MoviesCard key={savedMovies ? card.movieId : card.id} card={card} savedMovies={savedMovies} deleteLikeSavedMovies={deleteLikeSavedMovies} />

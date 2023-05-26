@@ -10,6 +10,7 @@ export default function Profile({ auth, setAuth }) {
   const [noEdit, setNoEdit] = useState(true);
   const [disabled, setDisabled] = useState(true);
   const [userInfo, setUserInfo] = useState(null);
+  const [successEdit, setSuccessEdit] = useState(false);
   const { values, handleChange, errors, isValid, setValues, setIsValid } = useFormWithValidation();
 
   useEffect(() => {
@@ -29,6 +30,12 @@ export default function Profile({ auth, setAuth }) {
       setIsValid(false);
     }
   }, [values, disabled, userInfo?.name, userInfo?.email, setIsValid]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSuccessEdit(false);
+    }, 2000);
+  }, [successEdit]);
 
   function exitProfile() {
     mainApi.exitProfile()
@@ -61,6 +68,7 @@ export default function Profile({ auth, setAuth }) {
           setUserInfo(res.user);
           setDisabled(true);
           setIsValid(false);
+          setSuccessEdit(true);
         })
         .catch(() => setNoEdit(false));
       }
@@ -101,7 +109,8 @@ export default function Profile({ auth, setAuth }) {
           </div>
           <p className="error-text">{!noEdit && 'Что-то пошло не так...'}</p>
           <div className="profile__box">
-            <button type={disabled ? 'button' : 'submit'} disabled={!disabled && !isValid} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>Редактировать</button>
+            <p className={`profile__success ${successEdit ? 'profile__success_active' : ''}`}>{successEdit ? 'Профиль успешно изменен!' : ''}</p>
+            <button type={disabled ? 'button' : 'submit'} disabled={!disabled && !isValid} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>{disabled ? 'Редактировать' : 'Сохранить'}</button>
             {disabled &&
             <button type="button" className="profile__btn profile__btn_type_exit" onClick={exitProfile}>Выйти из аккаунта</button>
             }
