@@ -17,14 +17,14 @@ export default function Movies({ auth }) {
     setMoviesMess('');
     setMoviesList(prevMoviesList => {
       const newMovieList = [...prevMoviesList, item]
-      sessionStorage.setItem('film', JSON.stringify(newMovieList));
+      localStorage.setItem('film', JSON.stringify(newMovieList));
 
       return newMovieList;
     });
   }
   function setMoviesDataNotFound(text) {
     setMoviesList([]);
-    sessionStorage.removeItem('film');
+    localStorage.removeItem('film');
     setMoviesMess(text);
   }
 
@@ -32,7 +32,7 @@ export default function Movies({ auth }) {
     setPreloader(true);
     setMoviesDataNotFound('');
 
-    const moviesStorage = JSON.parse(sessionStorage.getItem('movies'));
+    const moviesStorage = JSON.parse(localStorage.getItem('movies'));
 
     if(moviesStorage) {
       setTimeout(() => {
@@ -43,7 +43,7 @@ export default function Movies({ auth }) {
       moviesApi.getMovies()
       .then(res => {
         setMoviesFound(res, field, checkbox);
-        sessionStorage.setItem('movies', JSON.stringify(res));
+        localStorage.setItem('movies', JSON.stringify(res));
       })
       .catch(() => setMoviesDataNotFound('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
       .finally(() => setPreloader(false));
@@ -68,7 +68,7 @@ export default function Movies({ auth }) {
   }
 
   useEffect(() => {
-    const film = JSON.parse(sessionStorage.getItem('film'));
+    const film = JSON.parse(localStorage.getItem('film'));
 
     if(film !== null) {
       setMoviesList(film);
