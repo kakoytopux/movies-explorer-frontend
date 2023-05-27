@@ -25,7 +25,7 @@ export default function MoviesCard({ card, savedMovies, deleteLikeSavedMovies })
       .catch(err => console.log(err));
     } else {
       moviesList.forEach(item => {
-        if(item.movieId === card.movieId || card.id) {
+        if(item.movieId === card.id || item.movieId === card.movieId) {
           mainApi.deleteLikeMovieUser(item)
           .then(res => {
             if(savedMovies) {

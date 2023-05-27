@@ -46,7 +46,7 @@ export default function MoviesCardList({
           <MoviesCard key={savedMovies ? card.movieId : card.id} card={card} savedMovies={savedMovies} deleteLikeSavedMovies={deleteLikeSavedMovies} />
         )}
       </div>
-      {savedMovies ? '' : moviesList.length >= numberCards &&
+      {savedMovies ? '' : moviesList.length > numberCards &&
       <button type='button' className={`cards__btn ${preloader ? 'cards__btn_hidden' : ''}`}
       onClick={showCards}>Ещё</button>}
     </section>

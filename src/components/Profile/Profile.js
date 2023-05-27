@@ -31,17 +31,12 @@ export default function Profile({ auth, setAuth }) {
     }
   }, [values, disabled, userInfo?.name, userInfo?.email, setIsValid]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSuccessEdit(false);
-    }, 2000);
-  }, [successEdit]);
-
   function exitProfile() {
     mainApi.exitProfile()
     .then(() => {
+      setUserInfo(null);
+      localStorage.clear();
       setAuth(false);
-      sessionStorage.clear();
     })
     .catch(err => console.log(err));
   }
@@ -69,6 +64,10 @@ export default function Profile({ auth, setAuth }) {
           setDisabled(true);
           setIsValid(false);
           setSuccessEdit(true);
+          
+          setTimeout(() => {
+            setSuccessEdit(false);
+          }, 3000);
         })
         .catch(() => setNoEdit(false));
       }
@@ -108,8 +107,8 @@ export default function Profile({ auth, setAuth }) {
             </label>
           </div>
           <p className="error-text">{!noEdit && 'Что-то пошло не так...'}</p>
+          <p className={`profile__success ${successEdit ? 'profile__success_active' : ''}`}>{successEdit ? 'Профиль успешно изменен!' : ''}</p>
           <div className="profile__box">
-            <p className={`profile__success ${successEdit ? 'profile__success_active' : ''}`}>{successEdit ? 'Профиль успешно изменен!' : ''}</p>
             <button type={disabled ? 'button' : 'submit'} disabled={!disabled && !isValid} className={`profile__btn ${disabled ? '' : 'profile__btn_active'}`} onClick={editProfile}>{disabled ? 'Редактировать' : 'Сохранить'}</button>
             {disabled &&
             <button type="button" className="profile__btn profile__btn_type_exit" onClick={exitProfile}>Выйти из аккаунта</button>

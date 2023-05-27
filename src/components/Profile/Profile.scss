@@ -52,9 +52,11 @@
 }
 .profile__success {
   display: none;
-  @include font-settings($height: 12px, $weight: 400, $size: 10px);
+  @include font-settings($height: 12px, $weight: 400, $size: 13px);
   color: green;
   margin: 0;
+  height: 0;
+  text-align: center;
 }
 .profile__success_active {
   display: block;

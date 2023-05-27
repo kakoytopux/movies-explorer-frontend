@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './SearchForm.scss';
 
 export default function SearchForm({ movies, savedMovies }) {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const [onFocusField, setOnFocusField] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const [errValid, setErrValid] = useState('');
