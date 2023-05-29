@@ -45,10 +45,23 @@
   background-color: $background-color;
   border-radius: 50px;
 }
+.error-text {
+  color: $error-color;
+  @include font-settings($height: 12px, $weight: 400, $size: 10px);
+  margin: 0;
+  height: 0;
+}
+.error-text_type_profile {
+  text-align: right;
+}
 
 .body {
   position: relative;
   font-family: 'Inter', Helvetica, sans-serif;
+}
+.content_type_movies {
+  min-height: 100vh;
+  background-color: $section-bg-color;
 }
 
 @media screen and (max-width: 1279px) {

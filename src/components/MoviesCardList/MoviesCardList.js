@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MoviesCardList.scss';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useState, useEffect } from 'react';
 
-export default function MoviesCardList({ movies, savedMovies, setPreloader, preloader }) {
+export default function MoviesCardList({
+  setPreloader,
+  preloader,
+  moviesList,
+  moviesMess,
+  savedMovies,
+  deleteLikeSavedMovies,
+}) {
   const [numberCards, setNumberCards] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
-
+  
   useEffect(() => {
     window.onresize = () => {
-      setWidth(window.innerWidth);
+      setTimeout(() => {
+        setWidth(window.innerWidth);
+      }, 500);
     }
     
     if(width >= 1280) {
@@ -27,17 +35,18 @@ export default function MoviesCardList({ movies, savedMovies, setPreloader, prel
     setTimeout(() => {
       width >= 1280 ? setNumberCards(numberCards + 3) : setNumberCards(numberCards + 2);
       setPreloader(false);
-    }, 1500);
+    }, 1000);
   }
 
   return (
-    <section className={`cards ${savedMovies ? 'cards_type_saved' : ''}`}>
+    <section className={`cards ${moviesList.length < numberCards || savedMovies ? 'cards_type_more-padding' : ''}`}>
+      {moviesMess ? <p className='cards__mess'>{moviesMess}</p> : ''}
       <div className='cards__container'>
-        {movies.slice(0, savedMovies ? Infinity : numberCards).map((card, i) =>
-          <MoviesCard key={i} card={card} savedMovies={savedMovies} />
+        {moviesList?.slice(0, savedMovies ? Infinity : numberCards).map(card =>
+          <MoviesCard key={savedMovies ? card.movieId : card.id} card={card} savedMovies={savedMovies} deleteLikeSavedMovies={deleteLikeSavedMovies} />
         )}
       </div>
-      {!savedMovies && 
+      {savedMovies ? '' : moviesList.length > numberCards &&
       <button type='button' className={`cards__btn ${preloader ? 'cards__btn_hidden' : ''}`}
       onClick={showCards}>Ещё</button>}
     </section>

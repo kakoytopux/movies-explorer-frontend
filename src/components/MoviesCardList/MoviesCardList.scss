@@ -4,8 +4,15 @@
   @include flex-settings($direction: column);
   @include section-settings($p-top: 70px, $p-bottom: 80px, $bg: $section-bg-color);
 }
-.cards_type_saved {
+.cards_type_more-padding {
   @include section-settings($p-bottom: 247px);
+}
+.cards__mess {
+  @include font-settings($height: 20px, $weight: 400, $size: 17px);
+  align-self: center;
+  max-width: 500px;
+  text-align: center;
+  margin: 0;
 }
 .cards__container {
   display: grid;
@@ -30,7 +37,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .cards_type_saved {
+  .cards_type_more-padding {
     @include section-settings($p-bottom: 170px);
   }
   .cards__btn {
@@ -48,7 +55,7 @@
   .cards {
     @include section-settings($p-top: 40px);
   }
-  .cards_type_saved {
+  .cards_type_more-padding {
     @include section-settings($p-bottom: 166px);
   }
   .cards__container {

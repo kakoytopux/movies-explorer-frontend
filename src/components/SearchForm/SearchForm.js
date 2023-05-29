@@ -1,20 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './SearchForm.scss';
-import { useState } from "react";
 
-export default function SearchForm() {
-  const [checked, setChecked] = useState(true);
+export default function SearchForm({ movies, savedMovies }) {
+  const [checked, setChecked] = useState(false);
+  const [onFocusField, setOnFocusField] = useState(false);
+  const [searchVal, setSearchVal] = useState('');
+  const [errValid, setErrValid] = useState('');
 
   function setCheckbox(evt) {
     setChecked(evt.target.checked);
   }
-  
+  function handleChange(evt) {
+    setSearchVal(evt.target.value);
+  }
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    
+    if(!searchVal) {
+      setErrValid('Нужно ввести ключевое слово.');
+    } else {
+      setErrValid('');
+      movies(searchVal, checked);
+      
+      if(!savedMovies) {
+        localStorage.setItem('checkbox', JSON.stringify(checked));
+        localStorage.setItem('search', searchVal);
+      }
+    }
+  }
+  function setFocusField() {
+    setOnFocusField(!onFocusField);
+  }
+
+  useEffect(() => {
+    if(!savedMovies) {
+      const checkbox = JSON.parse(localStorage.getItem('checkbox'));
+      const search = localStorage.getItem('search');
+
+      if(checkbox !== null) {
+        setChecked(checkbox);
+      }
+      if(search !== null) {
+        setSearchVal(search);
+      }
+    }
+  }, [savedMovies]);
+
   return (
     <section className="search indent-section">
-      <form className="search__form" method="post" name="search">
-        <div className="search__container-field">
-          <input type="text" placeholder="Фильм" className="search__field" name="movies" required />
-          <button type="submit" className="search__submit"></button>
+      <form className="search__form" method="post" name="search" noValidate onSubmit={handleSubmit}>
+        <div className={`search__container-field ${onFocusField ? 'search__container-field_focus' : ''}`}>
+          <input type="text" placeholder="Фильм" onFocus={setFocusField} onBlur={setFocusField} className="search__field" name="movies" required value={searchVal} onChange={handleChange} />
+          <button type="submit" className="search__submit" title="Поиск"></button>
+          <span className="search__err">{errValid}</span>
         </div>
         <div className="search__container-checkbox">
           <input type="checkbox" className="search__checkbox" name="short" id="short"
